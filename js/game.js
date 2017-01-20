@@ -18,6 +18,8 @@ function start() {
     loadSprite(water);
 
     initShaders();
+
+    window.requestAnimationFrame(wrappedDrawScene);
 }
 
 var time = Date.now();
@@ -40,4 +42,3 @@ function wrappedDrawScene()
     window.requestAnimationFrame(wrappedDrawScene);
 }
 
-window.requestAnimationFrame(wrappedDrawScene);
