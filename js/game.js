@@ -29,7 +29,7 @@ function wrappedDrawScene()
     deltaTime = now - time;
     time = now;
 
-    drawScene();
+    clearScreen();
 
     for (var x=0;x<30;x++) {
         var y = Math.sin(x * 0.1 + time / 500) * 20 + pixHeight / 2;

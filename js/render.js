@@ -24,8 +24,6 @@ function initWebGL(canvas) {
     return gl;
 }
 
-function drawScene() {
+function clearScreen() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-
 }
