@@ -11,14 +11,20 @@ function start() {
     return;
   }
 
-  // Set clear color to black, fully opaque
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
-  // Enable depth testing
-  gl.enable(gl.DEPTH_TEST);
-  // Near things obscure far things
-  gl.depthFunc(gl.LEQUAL);
-  // Clear the color as well as the depth buffer.
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  initShaders();
+  initBuffers();
+  drawScene();
+
+//   // Set clear color to black, fully opaque
+//   gl.clearColor(0.0, 0.0, 0.0, 1.0);
+//   // Enable depth testing
+//   gl.enable(gl.DEPTH_TEST);
+//   // Near things obscure far things
+//   gl.depthFunc(gl.LEQUAL);
+//   // Clear the color as well as the depth buffer.
+//   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 }
 
 
@@ -27,6 +33,8 @@ function initWebGL(canvas) {
   
   // Try to grab the standard context. If it fails, fallback to experimental.
   gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+
+  gl.viewport(0, 0, canvas.width, canvas.height);
   
   // If we don't have a GL context, give up now
   if (!gl) {
@@ -57,5 +65,8 @@ function initShaders() {
   
   vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
   gl.enableVertexAttribArray(vertexPositionAttribute);
+
+  vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor");
+  gl.enableVertexAttribArray(vertexColorAttribute);
 }
 

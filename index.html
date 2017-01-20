@@ -1,6 +1,24 @@
 <!doctype html/>
 <html>
 <head>
+<script id="shader-fs" type="x-shader/x-fragment">
+  varying lowp vec4 vColor;
+    	
+      void main(void) {
+        gl_FragColor = vColor;
+      }
+</script>
+<script id="shader-vs" type="x-shader/x-vertex">
+	attribute vec3 aVertexPosition;
+	attribute vec4 aVertexColor;
+
+	varying lowp vec4 vColor;
+
+	void main(void) {
+		gl_Position = vec4(aVertexPosition, 1.0);
+		vColor = aVertexColor;
+	}
+</script>
 </head>
 <body onload="start()">
   <canvas id="glcanvas" width="640" height="480">
@@ -9,6 +27,7 @@
   </canvas>
   <script src="js/game.js"></script>
   <script src="js/shaders.js"></script>
+  <script src="js/render.js"></script>
 </body>
 </html>
 
