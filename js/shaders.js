@@ -68,5 +68,5 @@ function initShaders() {
 
 function setDrawCallPosition(x,y)
 {
-    gl.uniform4fv(scaleTranslateUniform, [1/pixWidth,1/pixHeight,x,y]);
+    gl.uniform4fv(scaleTranslateUniform, [2/pixWidth,2/pixHeight,x/(0.5*pixWidth)-1,y/(0.5*pixHeight)-1]);
 }

@@ -99,19 +99,21 @@ function loadSprite(source) {
     image.src = source
 }
 
-function drawSprite(spriteKey) {
+function drawSprite(spriteKey,x,y) {
     var sprite = spritesRegistry[spriteKey];
 
-    var numTri = (sprite.width * sprite.height) * 3 * 2;
+    if (sprite) {
+        var numTri = (sprite.width * sprite.height) * 3 * 2;
 
-    setDrawCallPosition(0,0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
-    gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
-    gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, sprite.col);
-    gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sprite.tris);
-    gl.drawElements(gl.TRIANGLES, numTri, gl.UNSIGNED_SHORT, 0);
+        setDrawCallPosition(x, y);
+        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
+        gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
+        gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.col);
+        gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sprite.tris);
+        gl.drawElements(gl.TRIANGLES, numTri, gl.UNSIGNED_SHORT, 0);
+    }
 }
 
