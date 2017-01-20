@@ -13,9 +13,14 @@ function start() {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
+    var water = "img/square_16x16.png";
+    loadSprite(water);
+
     initShaders();
     initBuffers();
     drawScene();
+
+    setTimeout(function(){drawScene();drawSprite(water);},1000);
 }
 
 
