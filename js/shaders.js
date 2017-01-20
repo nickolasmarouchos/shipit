@@ -61,5 +61,12 @@ function initShaders() {
 
     vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor");
     gl.enableVertexAttribArray(vertexColorAttribute);
+
+    scaleTranslateUniform = gl.getUniformLocation(shaderProgram, "scaleTranslate");
+    gl.uniform4fv(scaleTranslateUniform, [1,1,0,0]);
 }
 
+function setDrawCallPosition(x,y)
+{
+    gl.uniform4fv(scaleTranslateUniform, [1/pixWidth,1/pixHeight,x,y]);
+}
