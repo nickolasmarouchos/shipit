@@ -1,34 +1,4 @@
 
-var BOATS = {
-"tug":{
-    "offset":16,
-    "parts":[
-        {
-            img:"img/boats/Tugboat_chimney.png",
-            delay:4
-        },
-        {
-            img:"img/boats/Tugboat_cabin.png",
-            delay:3
-        },
-        {
-            img:"img/boats/Tugboat_flags.png",
-            delay:2
-        },
-        {
-            img:"img/boats/Tugboat_hull.png",
-            delay:0
-        },
-        {
-            img:"img/boats/Tugboat_lifesaver.png",
-            delay:2
-        },
-
-    ]
-}
-};
-
-
 function makeBoat(config)
 {
     var x = (pixWidth /2);
@@ -50,7 +20,7 @@ var SPRING = 2;
 function resetBoats()
 {
     activeBoats = [];
-    activeBoats.push(makeBoat(BOATS["tug"]));
+    activeBoats.push(makeBoat(BOATS["fish"]));
 }
 
 function updateBoats()
