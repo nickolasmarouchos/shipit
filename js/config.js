@@ -1,6 +1,10 @@
 
 var BOATS = {
 "tug":{
+    "speed":5,
+    "sailors":[1,1,2,3,4,5,1,2,3,4,5],
+    "height":50,
+    "width":50,
     "offset":16,
     "parts":[
         {
@@ -17,7 +21,8 @@ var BOATS = {
         },
         {
             img:"img/boats/Tugboat_hull.png",
-            delay:0
+            delay:0,
+            sailors:[{x:12,y:18},{x:19,y:17},{x:27,y:13},{x:33,y:10},{x:41,y:10}]
         },
         {
             img:"img/boats/Tugboat_lifesaver.png",
@@ -26,19 +31,26 @@ var BOATS = {
     ]
 },
 "pirate":{
+    "speed":12,
+    "sailors":[4,3,4,2,4],
+    "height":50,
+    "width":50,
     "offset":20,
     "parts":[
         {
             img:"img/boats/Pirate_mast.png",
-            delay:3
+            delay:3,
+            sailors:[{x:24,y:38}]
         },
         {
             img:"img/boats/Pirate_hull.png",
-            delay:0
+            delay:0,
+            sailors:[{x:23,y:4}]
         },
         {
             img:"img/boats/Pirate_gold.png",
-            delay:1
+            delay:1,
+            sailors:[{x:11,y:13},{x:31,y:15},{x:37,y:15}]
         },
         {
             img:"img/boats/Pirate_cannons.png",
@@ -51,6 +63,10 @@ var BOATS = {
     ]
 },
 "fish":{
+    "speed":8,
+    "sailors":[1,2,3,4,3,4,2,4],
+    "height":50,
+    "width":50,
     "offset":14,
     "parts":[
         {
@@ -59,7 +75,8 @@ var BOATS = {
         },
         {
             img:"img/boats/Fish_hull2.png",
-            delay:1
+            delay:1,
+            sailors:[{x:11,y:11},{x:20,y:11},{x:30,y:11},{x:40,y:11}]
         },
         {
             img:"img/boats/Fish_cabin.png",
@@ -76,6 +93,10 @@ var BOATS = {
     ]
 },
 "barrel":{
+    "speed":10,
+    "sailors":[1,1,2,2,3],
+    "height":50,
+    "width":50,
     "offset":10,
     "parts":[
         {
@@ -87,20 +108,23 @@ var BOATS = {
             delay:1
         },
         {
-            img:"img/boats/Barrel_middle.png",
-            delay:2
-        },
-        {
             img:"img/boats/Barrel_top2.png",
             delay:3
         },
         {
             img:"img/boats/Barrel_top.png",
             delay:4
+        },
+        {
+            img:"img/boats/Barrel_middle.png",
+            delay:2,
+            sailors:[{x:19,y:18},{x:23,y:18},{x:28,y:18}]
         }
     ]
 },
 "titanic":{
+    "speed":8,
+    "sailors":[0],
     "offset":15,
     "parts":[
         {
@@ -108,5 +132,27 @@ var BOATS = {
             delay:0
         }
     ]
-}
+},
+"tube":{
+    "speed":50,
+    "sailors":[1],
+    "height":50,
+    "width":50,
+    "offset":0,
+    "parts":[
+        {
+            img:"img/boats/Tube_back.png",
+            delay:0,
+            sailors:[{x:25,y:42}]
+        },
+        {
+            img:"img/boats/Tube_front.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Tube_head.png",
+            delay:1
+        }
+    ]
+},
 };

@@ -10,8 +10,7 @@ function waterYAt(x)
 
 var activeWaves = [];
 
-var chargeTime = 0;
-var chargePlus = 0;
+var waterChargePower = 0;
 
 function resetWater()
 {
@@ -25,11 +24,22 @@ function resetWater()
     for (var i=0; i<NUM_WATER_SEGMENTS;i++)
     {
         updateWater();
+        // FAKE HAXX!
+        time += deltaTime;
     }
 }
 
 function updateWater() {
+
+   if (waterChargePower< chargeCurrent)
+   {
+       waterChargePower++;
+   } else if (waterChargePower > chargeCurrent){
+       waterChargePower--;
+   }
+
     var leftMost = Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
+    var mermaidWave =  -1 * (waterChargePower / CHARGE_MAX) * 10;
     for (var wi = 0;wi<activeWaves.length;wi++)
     {
         var wave = activeWaves[wi];
@@ -39,7 +49,7 @@ function updateWater() {
             wi--;
         } else {
             var waveY = wave.shift();
-            leftMost += waveY;
+            mermaidWave += waveY;
         }
     }
 
@@ -52,6 +62,12 @@ function updateWater() {
         } else{
             l=leftMost;
         }
+
+        if (i < MERMAID_X)
+        {
+            l+=mermaidWave * (i / MERMAID_X) * 0.4;
+        }
+
 
         waterLevels[i] = l;
     }

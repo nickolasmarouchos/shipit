@@ -4,7 +4,10 @@ var background = "img/background.png";
 var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
-
+var sailor = "img/person_fisherman.png";
+var rock = "img/rock.png";
+var mermaid = "img/mermaid.png";
+var tombstone = "img/tombstone2.png";
 
 function start() {
     var canvas = document.getElementById("glcanvas");
@@ -25,7 +28,19 @@ function start() {
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
 
+    loadSprite(sailor);
+    loadSprite(rock);
+    loadSprite(mermaid);
+    loadSprite(tombstone);
 
+    numbersSprites.forEach(function(s){
+        loadSprite(s);
+    });
+
+    INPUT_SPRITES.forEach(function(s){
+        loadSprite(s);
+    });
+    
     for (var boatKey in BOATS) {
         var tug = BOATS[boatKey];
 
@@ -33,7 +48,6 @@ function start() {
             loadSprite(p.img);
         });
     }
-
     
     initShaders();
 
@@ -44,13 +58,18 @@ function start() {
     reset();
 }
 
+var isPaused = false;
 var time = 0;
 var deltaTime = 1/60;
 
 function reset() {
+    time = 0;
+
     resetInput();
     resetWater();
     resetBoats();
+
+    resetScore();
 }
 
 function drawScene()
@@ -64,17 +83,26 @@ function drawScene()
 
         time += deltaTime;
 
-        updateWater();
-        updateSpawner();
-        updateBoats();
+        if (!isPaused) {
+            updateWater();
+            updateSpawner();
+            updateBoats();
+        }
 
         //Create Background
         drawSprite(background, pixWidth / 2, pixHeight / 2);
-
+        
+        
         drawWaterBack();
+        drawTombstones();
+        drawSprite(rock, 16, 25);
+        drawSprite(mermaid, 17, 49);
         drawBoats();
+        drawDeadSailors();
         drawWaterFront();
 
+        drawChargeIndicator();
+        drawScore();
     }
     window.requestAnimationFrame(drawScene);
 }

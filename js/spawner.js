@@ -53,6 +53,7 @@ function updateSpawner()
   				spawnTime[i] = 0;
   			}
   		}
+
     }
 
     gameTime += deltaTime;
