@@ -64,7 +64,7 @@ function updateAliveBoat(boat)
     var dY = waterC - boat.y;
     if (dY < 0) {
         // free fall
-        boat.vy -= SPRING * 5;
+        boat.vy -= SPRING * 3;
         boat.vx+=0.3;
     } else {
         boat.vy *= 0.95;

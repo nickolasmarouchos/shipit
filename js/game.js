@@ -7,7 +7,6 @@ var wave_front_foam = "img/wave_front_foam.png";
 var sailor = "img/person_fisherman.png";
 var rock = "img/rock.png";
 var mermaid = "img/mermaid.png";
-var chargeIndicator = "img/water_d1.png";
 
 function start() {
     var canvas = document.getElementById("glcanvas");
@@ -28,13 +27,15 @@ function start() {
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
 
-    loadSprite(chargeIndicator);
-
     loadSprite(sailor);
     loadSprite(rock);
     loadSprite(mermaid);
 
     numbersSprites.forEach(function(s){
+        loadSprite(s);
+    });
+
+    INPUT_SPRITES.forEach(function(s){
         loadSprite(s);
     });
     
