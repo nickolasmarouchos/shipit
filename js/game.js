@@ -37,7 +37,8 @@ function start() {
     canvas.addEventListener("keyup", function(){isPressed = false;}, false);
 }
 
-var time = Date.now();
+var time = 0;
+var previousTimeStamp = Date.now();
 var deltaTime = 0;
 var isPressed = false;
 
@@ -55,8 +56,9 @@ function increaseAmplitude()
 function wrappedDrawScene()
 {
     var now = Date.now();
-    deltaTime = now - time;
-    time = now;
+    deltaTime = (now - previousTimeStamp) / 1000;
+    previousTimeStamp = now;
+    time+=deltaTime;
 
     updateWater();
 

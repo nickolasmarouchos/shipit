@@ -11,7 +11,7 @@ var waterLevels = [];
 })();
 
 function updateWater() {
-    var leftMost = Math.cos(time / 100) * Math.cos(time/1000) * 10;
+    var leftMost = Math.cos(time * 10) * Math.cos(time) * 10;
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
