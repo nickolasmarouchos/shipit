@@ -70,10 +70,10 @@ function wrappedDrawScene()
     
     //Create Background
     drawSprite(background, pixWidth/2, pixHeight/2);
-
-    drawSprite(boat1, pixWidth/2, pixHeight/2)
     
-    drawWater();
+    drawWaterBack();
+    drawBoat();
+    drawWaterFront();
 
     /*
     //Create Wave
