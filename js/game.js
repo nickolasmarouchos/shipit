@@ -55,12 +55,16 @@ function wrappedDrawScene()
     deltaTime = now - time;
     time = now;
 
+    updateWater();
+
     clearScreen();
     
     //Create Background
     drawSprite(background, 0, 0);
-    
-    
+
+    drawWater();
+
+    /*
     //Create Wave
     //var wave_amplitude = 20;            //higher number = higher wave
     var wave_frequency = time / 500;    //lower number = faster wave
@@ -81,6 +85,7 @@ function wrappedDrawScene()
     if(wave_amplitude > 2 && isPressed == false){
         wave_amplitude *= 0.999;
     }
+    */
 
 
     window.requestAnimationFrame(wrappedDrawScene);

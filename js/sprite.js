@@ -100,6 +100,8 @@ function loadSprite(source) {
     image.src = source;
 }
 
+var DEFAULT_COLOR = [1,1,1,1];
+
 function drawSprite(spriteKey,x,y,color) {
     var sprite = spritesRegistry[spriteKey];
 
@@ -108,7 +110,7 @@ function drawSprite(spriteKey,x,y,color) {
 
         if (!color)
         {
-            color = [1,1,1,1];
+            color = DEFAULT_COLOR;
         }
 
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
