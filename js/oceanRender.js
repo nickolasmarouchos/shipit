@@ -7,7 +7,7 @@ function drawWaterFront()
         var x = i * 8;
         var y = waterYAt(x)-32;
         
-        if((waterLevels[i-1]-0.5)>=waterLevels[i])
+        if(waterYAt(x-1)-0.1>waterYAt(x))
         {
             drawSprite(wave_front_foam, x, y);
         }else{
