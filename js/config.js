@@ -26,11 +26,11 @@ var BOATS = {
     ]
 },
 "pirate":{
-    "offset":16,
+    "offset":20,
     "parts":[
         {
             img:"img/boats/Pirate_mast.png",
-            delay:4
+            delay:3
         },
         {
             img:"img/boats/Pirate_hull.png",
@@ -38,7 +38,7 @@ var BOATS = {
         },
         {
             img:"img/boats/Pirate_gold.png",
-            delay:2
+            delay:1
         },
         {
             img:"img/boats/Pirate_cannons.png",
@@ -46,7 +46,7 @@ var BOATS = {
         },
         {
             img:"img/boats/Pirate_sail.png",
-            delay:2
+            delay:4
         }
     ]
 },
@@ -71,6 +71,31 @@ var BOATS = {
         },
         {
             img:"img/boats/Fish_smoke1.png",
+            delay:4
+        }
+    ]
+},
+"barrel":{
+    "offset":10,
+    "parts":[
+        {
+            img:"img/boats/Barrel_bottom.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Barrel_bottom2.png",
+            delay:1
+        },
+        {
+            img:"img/boats/Barrel_middle.png",
+            delay:2
+        },
+        {
+            img:"img/boats/Barrel_top2.png",
+            delay:3
+        },
+        {
+            img:"img/boats/Barrel_top.png",
             delay:4
         }
     ]
