@@ -1,5 +1,9 @@
 var seaLevel = 40;
 
+function drawMermaid() {
+    drawSprite(mermaid, MERMAID_X, mermaidY+5);
+}
+
 function drawWaterFront()
 {
     for (var i=0;i<(pixWidth / 8) + 1;i++) {

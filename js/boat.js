@@ -54,7 +54,7 @@ function makeBoat(config)
 
 var activeBoats = [];
 
-var MERMAID_X = 10;
+var MERMAID_X = 17;
 var BOAT_HARDNESS = 20;
 var INV_TIME = 60;
 
