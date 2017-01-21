@@ -1,0 +1,79 @@
+
+var BOATS = {
+"tug":{
+    "offset":16,
+    "parts":[
+        {
+            img:"img/boats/Tugboat_chimney.png",
+            delay:4
+        },
+        {
+            img:"img/boats/Tugboat_cabin.png",
+            delay:3
+        },
+        {
+            img:"img/boats/Tugboat_flags.png",
+            delay:2
+        },
+        {
+            img:"img/boats/Tugboat_hull.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Tugboat_lifesaver.png",
+            delay:2
+        }
+    ]
+},
+"pirate":{
+    "offset":16,
+    "parts":[
+        {
+            img:"img/boats/Pirate_mast.png",
+            delay:4
+        },
+        {
+            img:"img/boats/Pirate_hull.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Pirate_gold.png",
+            delay:2
+        },
+        {
+            img:"img/boats/Pirate_cannons.png",
+            delay:1
+        },
+        {
+            img:"img/boats/Pirate_sail.png",
+            delay:2
+        }
+    ]
+},
+"fish":{
+    "offset":14,
+    "parts":[
+        {
+            img:"img/boats/Fish_hull1.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Fish_hull2.png",
+            delay:1
+        },
+        {
+            img:"img/boats/Fish_cabin.png",
+            delay:2
+        },
+        {
+            img:"img/boats/Fish_chimney.png",
+            delay:3
+        },
+        {
+            img:"img/boats/Fish_smoke1.png",
+            delay:4
+        }
+    ]
+}
+
+};
