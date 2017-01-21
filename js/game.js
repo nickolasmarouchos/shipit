@@ -65,6 +65,7 @@ function drawScene()
         time += deltaTime;
 
         updateWater();
+        updateSpawner();
         updateBoats();
 
         //Create Background

@@ -26,7 +26,6 @@ var HARDINESS = 20;
 function resetBoats()
 {
     activeBoats = [];
-    activeBoats.push(makeBoat(BOATS["tug"]));
 }
 
 function updateAliveBoat(boat)
