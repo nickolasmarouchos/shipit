@@ -30,6 +30,10 @@ function start() {
     loadSprite(sailor);
     loadSprite(rock);
     loadSprite(mermaid);
+
+    numbersSprites.forEach(function(s){
+        loadSprite(s);
+    });
     
     for (var boatKey in BOATS) {
         var tug = BOATS[boatKey];
@@ -38,7 +42,6 @@ function start() {
             loadSprite(p.img);
         });
     }
-
     
     initShaders();
 
@@ -59,6 +62,8 @@ function reset() {
     resetInput();
     resetWater();
     resetBoats();
+
+    resetScore();
 }
 
 function drawScene()
@@ -88,6 +93,7 @@ function drawScene()
         drawBoats();
         drawWaterFront();
 
+        drawScore();
     }
     window.requestAnimationFrame(drawScene);
 }
