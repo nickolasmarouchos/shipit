@@ -138,8 +138,20 @@ var BOATS = {
     "offset":15,
     "parts":[
         {
-            img:"img/boat_titanic.png",
+            img:"img/boats/titanic_bottom.png",
             delay:0
+        },
+        {
+            img:"img/boats/titanic_middle.png",
+            delay:1
+        },
+        {
+            img:"img/boats/titanic_top.png",
+            delay:2
+        },
+        {
+            img:"img/boats/titanic_chim.png",
+            delay:3
         }
     ]
 },
