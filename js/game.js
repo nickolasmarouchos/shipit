@@ -44,10 +44,13 @@ function start() {
     reset();
 }
 
+var isPaused = false;
 var time = 0;
 var deltaTime = 1/60;
 
 function reset() {
+    time = 0;
+
     resetInput();
     resetWater();
     resetBoats();
@@ -64,9 +67,11 @@ function drawScene()
 
         time += deltaTime;
 
-        updateWater();
-        updateSpawner();
-        updateBoats();
+        if (!isPaused) {
+            updateWater();
+            updateSpawner();
+            updateBoats();
+        }
 
         //Create Background
         drawSprite(background, pixWidth / 2, pixHeight / 2);
