@@ -132,5 +132,27 @@ var BOATS = {
             delay:0
         }
     ]
-}
+},
+"tube":{
+    "speed":50,
+    "sailors":[1],
+    "height":50,
+    "width":50,
+    "offset":0,
+    "parts":[
+        {
+            img:"img/boats/Tube_back.png",
+            delay:0,
+            sailors:[{x:25,y:42}]
+        },
+        {
+            img:"img/boats/Tube_front.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Tube_head.png",
+            delay:1
+        }
+    ]
+},
 };

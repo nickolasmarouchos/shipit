@@ -36,6 +36,10 @@ function start() {
     numbersSprites.forEach(function(s){
         loadSprite(s);
     });
+
+    INPUT_SPRITES.forEach(function(s){
+        loadSprite(s);
+    });
     
     for (var boatKey in BOATS) {
         var tug = BOATS[boatKey];
@@ -97,6 +101,7 @@ function drawScene()
         drawDeadSailors();
         drawWaterFront();
 
+        drawChargeIndicator();
         drawScore();
     }
     window.requestAnimationFrame(drawScene);
