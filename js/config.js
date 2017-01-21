@@ -173,8 +173,8 @@ var BOATS = {
     "sensors":1,
     "sensitivity":2,
     "sailors":[1],
-    "height":50,
-    "width":50,
+    "height":20,
+    "width":20,
     "offset":0,
     "parts":[ 
         {
@@ -188,7 +188,7 @@ var BOATS = {
         {
             img:"img/boats/Row_top_m.png",
             delay:2,
-            sailors:[{x:19,y:18}]
+            sailors:[{x:10,y:5}]
         },
         {
             img:"img/boats/Row_top.png",
