@@ -1,7 +1,7 @@
 
 function makeBoat(config)
 {
-    var x = pixWidth  + 30;
+    var x = pixWidth + 30;
     var y = waterYAt(x);
 
     var items = config.sailors;
@@ -23,6 +23,7 @@ function makeBoat(config)
       x:x,
       y:y,
       sinkingVX:0,
+      vx:0,
       vy:0,
       config:config,
       yHist:[y,y,y,y,y],
@@ -46,22 +47,28 @@ function resetBoats()
 
 function updateAliveBoat(boat)
 {
-    boat.x -= boat.config.speed * deltaTime;
+    boat.x += (boat.vx-boat.config.speed) * deltaTime;
     if (boat.x < MERMAID_X)
     {
         console.log("GAME OVER");
         isPaused = true;
     }
-    var waterC = waterYAt(boat.x);
+    var waterC = 0;
+    for (var sensorOffset=-2;sensorOffset<3;sensorOffset++) {
+        waterC += waterYAt(boat.x + 8 * sensorOffset);
+    }
+    waterC /= 5;
 
     var prevVY = boat.vy;
 
     var dY = waterC - boat.y;
     if (dY < 0) {
         // free fall
-        boat.vy -= SPRING * 3;
+        boat.vy -= SPRING * 5;
+        boat.vx+=0.3;
     } else {
-        boat.vy *= 0.9;
+        boat.vy *= 0.95;
+        boat.vx *= 0.9;
         boat.vy += SPRING * dY;
     }
 
@@ -73,12 +80,15 @@ function updateAliveBoat(boat)
     }
 
     var acceleration = boat.vy - prevVY;
+
     if (Math.abs(acceleration) > BOAT_HARDNESS && boat.invTime == 0) {
         boat.hp--;
+        score++;
         boat.sinkingVX = boat.config.speed;
         boat.invTime = INV_TIME;
     }
 }
+
 
 function updateSinkingBoat(boat)
 {
@@ -86,7 +96,7 @@ function updateSinkingBoat(boat)
     boat.x -= boat.sinkingVX * deltaTime;
     boat.sinkingVX *= 0.97;
 
-    if (boat.y > 10) {
+    if (boat.y > -10) {
         boat.y += boat.vy * deltaTime * 0.3;
     }
 }
