@@ -1,11 +1,12 @@
 
-function makeSprite(width,height,vert,tris,col)
+function makeSprite(width,height,vert,tris,numTri,col)
 {
     return {
         width:width,
         height:height,
         vert:vert,
         tris:tris,
+        numTri:numTri,
         col:col
     };
 }
@@ -47,6 +48,7 @@ function loadSprite(source) {
         var vertices = [];
         var colors = [];
         var tris = [];
+        var numTri = 0;
 
         // Now you can access pixel data from imageData.data.
         // It's a one-dimensional array of RGBA values.
@@ -84,13 +86,16 @@ function loadSprite(source) {
                     colors.push(alpha);
                 }
 
-                tris.push(index);
-                tris.push(index+1);
-                tris.push(index+2);
+                if (alpha != 0) {
+                    tris.push(index);
+                    tris.push(index + 1);
+                    tris.push(index + 2);
 
-                tris.push(index+1);
-                tris.push(index+2);
-                tris.push(index+3);
+                    tris.push(index + 1);
+                    tris.push(index + 2);
+                    tris.push(index + 3);
+                    numTri+=6;
+                }
             }
         }
 
@@ -106,7 +111,7 @@ function loadSprite(source) {
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, trisBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(tris), gl.STATIC_DRAW);
 
-        registerSprite(source, makeSprite(width,height,vertexBuffer,trisBuffer,colorBuffer));
+        registerSprite(source, makeSprite(width,height,vertexBuffer,trisBuffer, numTri,colorBuffer));
 
         spritesLoaded++;
     };
@@ -119,7 +124,7 @@ function drawSprite(spriteKey,x,y,color) {
     var sprite = spritesRegistry[spriteKey];
 
     if (sprite) {
-        var numTri = (sprite.width * sprite.height) * 3 * 2;
+        var numTri = sprite.numTri;
 
         if (!color)
         {
