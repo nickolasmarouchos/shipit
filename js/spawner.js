@@ -39,11 +39,10 @@ var spawnFrequency = [
 		[4,7], [2,3], [9,12], [5,8], [10,15]
 	]
 
-]
+];
 
 function updateSpawner()
 {
-
     for(var i = 0; i < shipTypes.length; i++){
   		if(spawnFrequency[gameStage][i][1] != 0){
   			spawnTime[i] += deltaTime;

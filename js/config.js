@@ -2,6 +2,8 @@
 var BOATS = {
 "tug":{
     "speed":5,
+    "sensors":3,
+    "sensitivity":2,
     "sailors":[1,1,2,3,4,5,1,2,3,4,5],
     "height":50,
     "width":50,
@@ -32,6 +34,8 @@ var BOATS = {
 },
 "pirate":{
     "speed":12,
+    "sensors":4,
+    "sensitivity":2,
     "sailors":[4,3,4,2,4],
     "height":50,
     "width":50,
@@ -64,6 +68,8 @@ var BOATS = {
 },
 "fish":{
     "speed":8,
+    "sensors":3,
+    "sensitivity":3,
     "sailors":[1,2,3,4,3,4,2,4],
     "height":50,
     "width":50,
@@ -94,6 +100,8 @@ var BOATS = {
 },
 "barrel":{
     "speed":10,
+    "sensors":1,
+    "sensitivity":3,
     "sailors":[1,1,2,2,3],
     "height":50,
     "width":50,
@@ -124,17 +132,33 @@ var BOATS = {
 },
 "titanic":{
     "speed":8,
+    "sensors":5,
+    "sensitivity":1,
     "sailors":[0],
     "offset":15,
     "parts":[
         {
-            img:"img/boat_titanic.png",
+            img:"img/boats/titanic_bottom.png",
             delay:0
+        },
+        {
+            img:"img/boats/titanic_middle.png",
+            delay:1
+        },
+        {
+            img:"img/boats/titanic_top.png",
+            delay:2
+        },
+        {
+            img:"img/boats/titanic_chim.png",
+            delay:3
         }
     ]
 },
 "tube":{
     "speed":50,
+    "sensors":1,
+    "sensitivity":3,
     "sailors":[1],
     "height":50,
     "width":50,

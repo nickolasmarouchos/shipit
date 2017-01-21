@@ -2,7 +2,9 @@
 function makeBoat(config)
 {
     var x = pixWidth + 30;
-    var y = waterYAt(x);
+    var y = waterYAt(x)
+
+    var speed = config.speed + Math.random();
 
     var items = config.sailors;
 
@@ -16,8 +18,24 @@ function makeBoat(config)
         }
     });
 
-    var sailorOffset = Math.floor(Math.random() * (possibleSailors - numSailors));
-
+    var sailors = [];
+    var sailorsDistributed = 0;
+    var escCounter=0;
+    while (sailorsDistributed < numSailors)
+    {
+        var randomSailor = Math.floor(Math.random() * possibleSailors);
+        if (sailors.indexOf(randomSailor) == -1)
+        {
+            sailors.push(randomSailor);
+            sailorsDistributed++;
+        }
+        escCounter++;
+        if (escCounter > 10000)
+        {
+            console.error("escCounter triggered");
+            break;
+        }
+    }
 
   return {
       x:x,
@@ -25,17 +43,17 @@ function makeBoat(config)
       sinkingVX:0,
       vx:0,
       vy:0,
+      speed:speed,
       config:config,
       yHist:[y,y,y,y,y],
       invTime: 0,
       hp:numSailors,
-      sailorOffset:sailorOffset
+      sailors:sailors
   };
 };
 
 var activeBoats = [];
 
-var SPRING = 2;
 var MERMAID_X = 10;
 var BOAT_HARDNESS = 20;
 var INV_TIME = 60;
@@ -54,22 +72,24 @@ function updateAliveBoat(boat)
         isPaused = true;
     }
     var waterC = 0;
-    for (var sensorOffset=-2;sensorOffset<3;sensorOffset++) {
-        waterC += waterYAt(boat.x + 8 * sensorOffset);
+    var numSensors = boat.config.sensors;
+     var nsh = Math.floor(numSensors / 2);
+    for (var sensorOffset=nsh;sensorOffset< nsh + numSensors;sensorOffset++) {
+        waterC += waterYAt(boat.x);
     }
-    waterC /= 5;
+    waterC /= numSensors;
 
     var prevVY = boat.vy;
 
     var dY = waterC - boat.y;
     if (dY < 0) {
         // free fall
-        boat.vy -= SPRING * 3;
-        boat.vx+=0.3;
+        boat.vy -= boat.config.sensitivity * 3;
+        boat.vx+=0.2;
     } else {
         boat.vy *= 0.95;
         boat.vx *= 0.9;
-        boat.vy += SPRING * dY;
+        boat.vy += boat.config.sensitivity * dY;
     }
 
     boat.y += boat.vy * deltaTime * 0.3;
@@ -86,6 +106,7 @@ function updateAliveBoat(boat)
         score++;
         boat.sinkingVX = boat.config.speed;
         boat.invTime = INV_TIME;
+        boat.sailors.shift();
         killSailor(boat.x, boat.y);
     }
 }
