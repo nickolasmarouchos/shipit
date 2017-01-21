@@ -69,7 +69,7 @@ var BOATS = {
 "fishboat":{
     "speed":8,
     "sensors":3,
-    "sensitivity":3,
+    "sensitivity":2,
     "sailors":[1],
     "height":50,
     "width":50,
@@ -101,7 +101,7 @@ var BOATS = {
 "barrel":{
     "speed":10,
     "sensors":1,
-    "sensitivity":3,
+    "sensitivity":2,
     "sailors":[1],
     "height":50,
     "width":50,
@@ -171,7 +171,7 @@ var BOATS = {
 "rowboat":{
     "speed":15,
     "sensors":1,
-    "sensitivity":3,
+    "sensitivity":2,
     "sailors":[1],
     "height":50,
     "width":50,
@@ -199,7 +199,7 @@ var BOATS = {
 "tube":{
     "speed":5,
     "sensors":1,
-    "sensitivity":3,
+    "sensitivity":2,
     "sailors":[1],
     "height":50,
     "width":50,
