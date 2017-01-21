@@ -16,6 +16,7 @@ function initWebGL(canvas) {
 
     gl.viewport(0, 0, canvasWidth, canvasHeight);
     gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     // If we don't have a GL context, give up now
     if (!gl) {

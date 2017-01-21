@@ -113,7 +113,6 @@ function drawSprite(spriteKey,x,y,color) {
             color = DEFAULT_COLOR;
         }
 
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
         setDrawCallColor(color[0],color[1],color[2],color[3]);
 
         setDrawCallPosition(x - sprite.width/2, y - sprite.height / 2);
