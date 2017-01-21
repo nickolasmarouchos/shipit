@@ -9,5 +9,5 @@ var simpleWave = [];
         y *= (LENGTH - i) / LENGTH
         simpleWave.push(y);
     }
-    
+
 })();

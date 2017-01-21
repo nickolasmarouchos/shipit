@@ -1,6 +1,5 @@
 
-var SUPER = 1;
-var NUM_WATER_SEGMENTS = pixWidth * SUPER;
+var NUM_WATER_SEGMENTS = pixWidth;
 
 var waterLevels = [];
 (function()
@@ -13,18 +12,16 @@ var waterLevels = [];
 
 function waterYAt(x)
 {
-    return waterLevels[x / SUPER] + seaLevel;
+    return waterLevels[x] + seaLevel;
 }
 
 var activeWaves = [];
-
-
 
 var chargeTime = 0;
 var chargePlus = 0;
 
 function updateWater() {
-    var leftMost = 0;
+    var leftMost = Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
     for (var wi = 0;wi<activeWaves.length;wi++)
     {
         var wave = activeWaves[wi];
