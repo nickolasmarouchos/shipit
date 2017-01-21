@@ -36,7 +36,7 @@ function drawTombstones()
 {
     for (var i = 0; i<tombstones.length; i++)
     {
-        drawSprite(sailor, tombstone[i].x, tombstone[i].y);
+        drawSprite(sailor, tombstones[i].x, tombstones[i].y);
     }
 }
 
