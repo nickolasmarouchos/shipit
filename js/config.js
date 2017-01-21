@@ -150,19 +150,19 @@ var BOATS = {
             delay:2
         },
         {
-            img:"img/boats/titanic_chim1.png",
+            img:"img/boats/titanic_ch1.png",
             delay:3
         },
         {
-            img:"img/boats/titanic_chim2.png",
+            img:"img/boats/titanic_ch2.png",
             delay:4
         },
         {
-            img:"img/boats/titanic_chim3.png",
+            img:"img/boats/titanic_ch3.png",
             delay:5
         },
         {
-            img:"img/boats/titanic_chim4.png",
+            img:"img/boats/titanic_ch4.png",
             delay:6
         }
     ]
