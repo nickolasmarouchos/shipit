@@ -64,9 +64,17 @@ function initShaders() {
 
     scaleTranslateUniform = gl.getUniformLocation(shaderProgram, "scaleTranslate");
     gl.uniform4fv(scaleTranslateUniform, [1,1,0,0]);
+
+    colorUniform = gl.getUniformLocation(shaderProgram, "color");
+    gl.uniform4fv(colorUniform, [1,1,1,1]);
 }
 
 function setDrawCallPosition(x,y)
 {
     gl.uniform4fv(scaleTranslateUniform, [2/pixWidth,2/pixHeight,x/(0.5*pixWidth)-1,y/(0.5*pixHeight)-1]);
+}
+
+function setDrawCallColor(r,g,b,a)
+{
+    gl.uniform4fv(colorUniform, [r,g,b,a]);
 }

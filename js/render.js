@@ -15,6 +15,7 @@ function initWebGL(canvas) {
     canvasHeight = canvas.height;
 
     gl.viewport(0, 0, canvasWidth, canvasHeight);
+    gl.enable(gl.BLEND);
 
     // If we don't have a GL context, give up now
     if (!gl) {

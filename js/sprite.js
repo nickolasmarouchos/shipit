@@ -42,10 +42,11 @@ function loadSprite(source) {
             for (var x = 0; x<width; x++) {
 
                 var index = (y * width + x) * 4;
-                var red = imageData.data[index] / 255.0;
-                var green = imageData.data[index + 1] / 255.0;
-                var blue = imageData.data[index + 2] / 255.0;
-                var alpha = imageData.data[index + 3] / 255.0;
+                var pixIndex = ((height-y-1) * width + x) * 4;
+                var red = imageData.data[pixIndex] / 255.0;
+                var green = imageData.data[pixIndex + 1] / 255.0;
+                var blue = imageData.data[pixIndex + 2] / 255.0;
+                var alpha = imageData.data[pixIndex + 3] / 255.0;
 
                 vertices.push(x);
                 vertices.push(y);
@@ -99,13 +100,21 @@ function loadSprite(source) {
     image.src = source;
 }
 
-function drawSprite(spriteKey,x,y) {
+function drawSprite(spriteKey,x,y,color) {
     var sprite = spritesRegistry[spriteKey];
 
     if (sprite) {
         var numTri = (sprite.width * sprite.height) * 3 * 2;
 
-        setDrawCallPosition(x, y);
+        if (!color)
+        {
+            color = [1,1,1,1];
+        }
+
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+        setDrawCallColor(color[0],color[1],color[2],color[3]);
+
+        setDrawCallPosition(x - sprite.width/2, y - sprite.height / 2);
         gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
         gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
         gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);

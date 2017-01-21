@@ -15,10 +15,11 @@
 	varying lowp vec4 vColor;
 
 	uniform vec4 scaleTranslate;
+	uniform vec4 color;
 
 	void main(void) {
 		gl_Position = vec4( scaleTranslate.xy * aVertexPosition.xy + scaleTranslate.zw, 0.0, 1.0);
-		vColor = aVertexColor;
+		vColor = aVertexColor * color;
 	}
 </script>
 </head>
