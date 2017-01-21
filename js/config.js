@@ -167,7 +167,6 @@ var BOATS = {
         }
     ]
 },
-{
 "rowboat":{
     "speed":15,
     "sensors":1,
@@ -184,7 +183,7 @@ var BOATS = {
         {
             "img/boats/Row_bottom_m.png",
             delay:1
-        }.
+        },
         {
             "img/boats/Row_top_m.png",
             delay:2
@@ -195,7 +194,6 @@ var BOATS = {
         }
    ]           
 },    
-}
 "tube":{
     "speed":50,
     "sensors":1,
