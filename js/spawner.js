@@ -12,7 +12,7 @@ function updateSpawner()
 
     if (acc > 5)
     {
-        spawnBoat("tug");
+        spawnBoat("barrel");
         acc = 0;
     }
 }

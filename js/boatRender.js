@@ -1,9 +1,4 @@
 
-function drawBoatsBack()
-{
-    //Draw people behind boat
-}
-
 function drawBoats()
 {
     for (var boatI = 0; boatI < activeBoats.length;boatI++) {
@@ -44,8 +39,3 @@ function drawBoats()
     }
 }
 
-
-function drawBoatsFront()
-{   
-    //Draw people in front of boat
-}
