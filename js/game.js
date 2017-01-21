@@ -35,6 +35,10 @@ function start() {
 
     canvas.addEventListener("keydown", increaseAmplitude, false);
     canvas.addEventListener("keyup", function(){isPressed = false;}, false);
+
+
+    initInput();
+
 }
 
 var time = 0;
