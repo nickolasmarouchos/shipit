@@ -16,16 +16,27 @@ function waterYAt(x)
     return waterLevels[x / SUPER] + seaLevel;
 }
 
+var activeWaves = [];
+
+
+
 var chargeTime = 0;
 var chargePlus = 0;
 
 function updateWater() {
-    var leftMost = Math.sin(chargeTime * 2) * chargePlus;
-    chargeTime += deltaTime;
-
-    //var leftMost = chargePlus;
-
-    chargePlus *= 0.99;
+    var leftMost = 0;
+    for (var wi = 0;wi<activeWaves.length;wi++)
+    {
+        var wave = activeWaves[wi];
+        if (wave.length == 0)
+        {
+            activeWaves.splice(wi,1);
+            wi--;
+        } else {
+            var waveY = wave.shift();
+            leftMost += waveY;
+        }
+    }
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
