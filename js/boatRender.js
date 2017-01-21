@@ -23,9 +23,20 @@ function drawBoats()
                 y = boat.yHist[delay];
             }
             y+=config.offset;
+            
+            
+            if (part.sailors)
+            {
+                for(var slr = 0; slr<part.sailors.length; slr++)
+                {
+                    //console.log("has sailors");
+                    var slrx = x - config.width/2 + part.sailors[slr].x;
+                    var slry = boat.yHist[1] + part.sailors[slr].y;
+                    drawSprite(sailor, slrx, slry);
+                }
+            }
             drawSprite(part.img, x, y);
         }
-        //drawSprite(boat1, x, y);
     }
 }
 

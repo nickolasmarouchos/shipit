@@ -20,7 +20,7 @@ var SPRING = 2;
 function resetBoats()
 {
     activeBoats = [];
-    activeBoats.push(makeBoat(BOATS["tug"]));
+    activeBoats.push(makeBoat(BOATS["barrel"]));
 }
 
 function updateBoats()
