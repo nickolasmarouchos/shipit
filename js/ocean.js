@@ -16,8 +16,15 @@ function waterYAt(x)
     return waterLevels[x / SUPER] + seaLevel;
 }
 
+var chargeTime = 0;
+var chargePlus = 0;
+
 function updateWater() {
-    var leftMost = Math.cos(time * 2) * Math.cos(time) * 10;
+    var leftMost = Math.cos(time * 2) * chargePlus;
+
+    //var leftMost = chargePlus;
+
+    chargePlus *= 0.9;
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
