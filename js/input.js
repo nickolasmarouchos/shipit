@@ -26,6 +26,7 @@ function charge(){
 function release(){
     chargePlus = chargeCurrent;
     chargeCurrent = 0;
+    chargeTime = 0;
     console.log("released");
 }
 

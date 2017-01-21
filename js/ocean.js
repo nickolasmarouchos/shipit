@@ -20,11 +20,12 @@ var chargeTime = 0;
 var chargePlus = 0;
 
 function updateWater() {
-    var leftMost = Math.cos(time * 2) * chargePlus;
+    var leftMost = Math.sin(chargeTime * 2) * chargePlus;
+    chargeTime += deltaTime;
 
     //var leftMost = chargePlus;
 
-    chargePlus *= 0.9;
+    chargePlus *= 0.99;
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
