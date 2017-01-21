@@ -150,11 +150,50 @@ var BOATS = {
             delay:2
         },
         {
-            img:"img/boats/titanic_chim.png",
+            img:"img/boats/titanic_ch1.png",
             delay:3
+        },
+        {
+            img:"img/boats/titanic_ch2.png",
+            delay:4
+        },
+        {
+            img:"img/boats/titanic_ch3.png",
+            delay:5
+        },
+        {
+            img:"img/boats/titanic_ch4.png",
+            delay:6
         }
     ]
 },
+"rowboat":{
+    "speed":15,
+    "sensors":1,
+    "sensitivity":3,
+    "sailors":[1],
+    "height":50,
+    "width":50,
+    "offset":0,
+    "parts":[ 
+        {
+            img:"img/boats/Row_bottom.png",
+            delay:0
+        },
+        {
+            img:"img/boats/Row_bottom_m.png",
+            delay:1
+        },
+        {
+            img:"img/boats/Row_top_m.png",
+            delay:2
+        },
+        {
+            img:"img/boats/Row_top.png",
+            delay:3
+        }
+   ]           
+},    
 "tube":{
     "speed":50,
     "sensors":1,
