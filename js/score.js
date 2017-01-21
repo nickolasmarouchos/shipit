@@ -21,7 +21,6 @@ var numbersSprites = [
 
 function drawScore()
 {
-    score += 1;
     var div = 1;
     for (var i=0;i<5;i++) {
         var v = Math.floor(score/div) % 10;
