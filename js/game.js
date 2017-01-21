@@ -26,11 +26,13 @@ function start() {
     loadSprite(wave_front_foam);
 
 
-    var tug = BOATS["tug"];
+    for (var boatKey in BOATS) {
+        var tug = BOATS[boatKey];
 
-        tug.parts.forEach(function(p){
+        tug.parts.forEach(function (p) {
             loadSprite(p.img);
         });
+    }
 
     
     initShaders();
