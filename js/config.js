@@ -1,6 +1,8 @@
 
 var BOATS = {
 "tug":{
+    "speed":5,
+    "sailors":[1,1,2,3,4,5,1,2,3,4,5],
     "height":50,
     "width":50,
     "offset":16,
@@ -29,6 +31,8 @@ var BOATS = {
     ]
 },
 "pirate":{
+    "speed":12,
+    "sailors":[4,3,4,2,4],
     "height":50,
     "width":50,
     "offset":20,
@@ -59,6 +63,8 @@ var BOATS = {
     ]
 },
 "fish":{
+    "speed":8,
+    "sailors":[1,2,3,4,3,4,2,4],
     "height":50,
     "width":50,
     "offset":14,
@@ -87,6 +93,8 @@ var BOATS = {
     ]
 },
 "barrel":{
+    "speed":10,
+    "sailors":[1,1,2,2,3],
     "height":50,
     "width":50,
     "offset":10,
@@ -115,6 +123,8 @@ var BOATS = {
     ]
 },
 "titanic":{
+    "speed":8,
+    "sailors":[0],
     "offset":15,
     "parts":[
         {

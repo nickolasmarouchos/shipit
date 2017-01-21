@@ -1,8 +1,24 @@
 
 function makeBoat(config)
 {
-    var x = pixWidth + 30;
-    var y = pixHeight / 2 + 10;
+    var x = pixWidth  + 30;
+    var y = waterYAt(x);
+
+    var items = config.sailors;
+
+    var numSailors = items[Math.floor(Math.random()*items.length)];
+
+    var possibleSailors = 0;
+
+    config.parts.forEach(function(part){
+        if (part.sailors) {
+            possibleSailors += part.sailors.length;
+        }
+    });
+
+    var sailorOffset = Math.floor(Math.random() * (possibleSailors - numSailors));
+
+
   return {
       x:x,
       y:y,
@@ -11,17 +27,17 @@ function makeBoat(config)
       config:config,
       yHist:[y,y,y,y,y],
       invTime: 0,
-      hp:3
+      hp:numSailors,
+      sailorOffset:sailorOffset
   };
 };
 
 var activeBoats = [];
 
 var SPRING = 2;
-var SPEED = 10;
 var MERMAID_X = 10;
+var BOAT_HARDNESS = 20;
 var INV_TIME = 60;
-var HARDINESS = 20;
 
 function resetBoats()
 {
@@ -30,7 +46,7 @@ function resetBoats()
 
 function updateAliveBoat(boat)
 {
-    boat.x -= SPEED * deltaTime;
+    boat.x -= boat.config.speed * deltaTime;
     if (boat.x < MERMAID_X)
     {
         console.log("GAME OVER");
@@ -57,9 +73,9 @@ function updateAliveBoat(boat)
     }
 
     var acceleration = boat.vy - prevVY;
-    if (Math.abs(acceleration ) > HARDINESS && boat.invTime == 0) {
+    if (Math.abs(acceleration) > BOAT_HARDNESS && boat.invTime == 0) {
         boat.hp--;
-        boat.sinkingVX = SPEED;
+        boat.sinkingVX = boat.config.speed;
         boat.invTime = INV_TIME;
     }
 }

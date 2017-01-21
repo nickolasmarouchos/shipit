@@ -10,6 +10,8 @@ function drawBoats()
         var boat = activeBoats[boatI];
         var config = boat.config;
 
+        var sailorCount = 0;
+
         //Draw main boat
         var x = boat.x;
         for (var pi = 0; pi<config.parts.length; pi++)
@@ -29,10 +31,12 @@ function drawBoats()
             {
                 for(var slr = 0; slr<part.sailors.length; slr++)
                 {
-                    //console.log("has sailors");
-                    var slrx = x - config.width/2 + part.sailors[slr].x;
-                    var slry = boat.yHist[1] + part.sailors[slr].y;
-                    drawSprite(sailor, slrx, slry);
+                    sailorCount++;
+                    if ( sailorCount >= boat.sailorOffset && sailorCount < boat.hp + boat.sailorOffset) {
+                        var slrx = x - config.width / 2 + part.sailors[slr].x;
+                        var slry = boat.yHist[1] + part.sailors[slr].y;
+                        drawSprite(sailor, slrx, slry);
+                    }
                 }
             }
             drawSprite(part.img, x, y);
