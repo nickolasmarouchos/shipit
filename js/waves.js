@@ -6,7 +6,7 @@ var notchWave = [];
 var WAVES = [tinyWave,simpleWave,notchWave];
 
 (function() {
-    var LENGTH = 100;
+    var LENGTH = 400;
 
     for (var i = 0; i < LENGTH; i++) {
         var y = Math.sin(i / 10);

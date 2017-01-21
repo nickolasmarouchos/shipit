@@ -69,7 +69,7 @@ function initShaders() {
     gl.uniform4fv(colorUniform, [1,1,1,1]);
 }
 
-function setDrawCallPosition(x,y)
+function setDrawCallPosition(x,y,m)
 {
     gl.uniform4fv(scaleTranslateUniform, [2/pixWidth,2/pixHeight,x/(0.5*pixWidth)-1,y/(0.5*pixHeight)-1]);
 }
