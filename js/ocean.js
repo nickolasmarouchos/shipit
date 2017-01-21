@@ -1,11 +1,11 @@
 
-var NUM_WATER_SEGMENTS = pixWidth;
+var NUM_WATER_SEGMENTS = pixWidth + 100;// offscreen water
 
 var waterLevels = [];
 
 function waterYAt(x)
 {
-    return waterLevels[x] + seaLevel;
+    return waterLevels[Math.round(x)] + seaLevel;
 }
 
 var activeWaves = [];

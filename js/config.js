@@ -113,6 +113,14 @@ var BOATS = {
             sailors:[{x:19,y:18},{x:23,y:18},{x:28,y:18}]
         }
     ]
+},
+"titanic":{
+    "offset":15,
+    "parts":[
+        {
+            img:"img/boat_titanic.png",
+            delay:0
+        }
+    ]
 }
-
 };
