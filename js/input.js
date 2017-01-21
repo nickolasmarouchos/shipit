@@ -10,9 +10,8 @@ function resetInput()
 }
 
 function initInput(){
-    var canvas = document;
-    canvas.addEventListener("keydown", charge, false);
-    canvas.addEventListener("keyup", release, false);
+    document.addEventListener("keydown", charge, false);
+    document.addEventListener("keyup", release, false);
 }
 
 

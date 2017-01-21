@@ -5,8 +5,6 @@ var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
 
-var boat1 = "img/boat1.png";
-
 
 function start() {
     var canvas = document.getElementById("glcanvas");
@@ -27,7 +25,15 @@ function start() {
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
 
-    loadSprite(boat1);
+
+    for (var boatKey in BOATS) {
+        var tug = BOATS[boatKey];
+
+        tug.parts.forEach(function (p) {
+            loadSprite(p.img);
+        });
+    }
+
     
     initShaders();
 
