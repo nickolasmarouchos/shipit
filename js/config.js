@@ -167,6 +167,35 @@ var BOATS = {
         }
     ]
 },
+{
+"rowboat":{
+    "speed":15,
+    "sensors":1,
+    "sensitivity":3,
+    "sailors":[1],
+    "height":50,
+    "width":50,
+    "offset":0,
+    "parts":[ 
+        {
+            "img/boats/Row_bottom.png",
+            delay:0
+        },
+        {
+            "img/boats/Row_bottom_m.png",
+            delay:1
+        }.
+        {
+            "img/boats/Row_top_m.png",
+            delay:2
+        },
+        {
+            "img/boats/Row_top.png",
+            delay:3
+        }
+   ]           
+},    
+}
 "tube":{
     "speed":50,
     "sensors":1,
