@@ -1,6 +1,11 @@
 var gl; // A global variable for the WebGL context
 
-var water = "img/water2.png";
+var background = "img/background.png";
+
+var wave_back = "img/wave_back.png";
+var wave_front_rest = "img/green_8x4.png";
+var wave_front_foam = "img/red_8x4.png";
+
 
 function start() {
     var canvas = document.getElementById("glcanvas");
@@ -15,7 +20,11 @@ function start() {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-    loadSprite(water);
+    loadSprite(background);
+    
+    loadSprite(wave_back);
+    loadSprite(wave_front_rest);
+    loadSprite(wave_front_foam);
 
     initShaders();
 
@@ -32,11 +41,26 @@ function wrappedDrawScene()
     time = now;
 
     clearScreen();
+    
+    //Create Background
+    drawSprite(background, 0, 0);
+    
+    
+    //Create Wave
+    var wave_amplitude = 20;            //higher number = higher wave
+    var wave_frequency = time / 500;    //lower number = faster wave
+    var water_level = 30;
+    
+    for (var x=0;x<20;x++) {
+        var y = Math.sin(x * 0.1 + wave_frequency) * wave_amplitude + water_level;
 
-    for (var x=0;x<30;x++) {
-        var y = Math.sin(x * 0.1 + time / 500) * 20 + pixHeight / 2;
-
-        drawSprite(water, x * 5, y);
+        drawSprite(wave_back, x * 8, y);
+        if(Math.sin(x * 0.1 + wave_frequency)<-0.75)
+        {
+            drawSprite(wave_front_foam, x * 8, y);
+        }else{
+            drawSprite(wave_front_rest, x * 8, y);
+        }
     }
 
     window.requestAnimationFrame(wrappedDrawScene);

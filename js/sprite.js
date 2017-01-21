@@ -39,7 +39,7 @@ function loadSprite(source) {
         // It's a one-dimensional array of RGBA values.
         // Here's an example of how to get a pixel's color at (x,y)
         for (var y=0;y<height;y++) {
-            for (var x = 0; x <width; x++) {
+            for (var x = 0; x<width; x++) {
 
                 var index = (y * width + x) * 4;
                 var red = imageData.data[index] / 255.0;
@@ -96,7 +96,7 @@ function loadSprite(source) {
 
         console.log("done");
     };
-    image.src = source
+    image.src = source;
 }
 
 function drawSprite(spriteKey,x,y) {
