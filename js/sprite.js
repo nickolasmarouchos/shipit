@@ -10,6 +10,18 @@ function makeSprite(width,height,vert,tris,col)
     };
 }
 
+var spritesToLoad = 0;
+var spritesLoaded = 0;
+
+function spritesLoadingProgress()
+{
+    if ( spritesToLoad == 0)
+    {
+        return 0;
+    }
+    return spritesLoaded / spritesToLoad;
+}
+
 var spritesRegistry = {};
 
 function registerSprite(id,sprite)
@@ -19,6 +31,7 @@ function registerSprite(id,sprite)
 
 function loadSprite(source) {
     var image = new Image();
+    spritesToLoad++;
     image.onload = function () {
         var canvas = document.createElement('canvas');
         var width = image.width;
@@ -95,7 +108,7 @@ function loadSprite(source) {
 
         registerSprite(source, makeSprite(width,height,vertexBuffer,trisBuffer,colorBuffer));
 
-        console.log("done");
+        spritesLoaded++;
     };
     image.src = source;
 }

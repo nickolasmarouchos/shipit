@@ -55,20 +55,26 @@ function reset() {
 
 function drawScene()
 {
-    time+=deltaTime;
+    var loadProgress = spritesLoadingProgress();
+    if (loadProgress < 1)
+    {
+        gl.clearColor(0.0, 0.0, loadProgress, 1.0);
+        clearScreen();
+    } else {
 
-    updateWater();
-    updateBoats();
+        time += deltaTime;
 
-    clearScreen();
-    
-    //Create Background
-    drawSprite(background, pixWidth/2, pixHeight/2);
-    
-    drawWaterBack();
-    drawBoats();
-    drawWaterFront();
+        updateWater();
+        updateBoats();
 
+        //Create Background
+        drawSprite(background, pixWidth / 2, pixHeight / 2);
+
+        drawWaterBack();
+        drawBoats();
+        drawWaterFront();
+
+    }
     window.requestAnimationFrame(drawScene);
 }
 
