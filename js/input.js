@@ -49,3 +49,10 @@ function release(){
     chargeCurrent = 0;
 }
 
+function drawChargeIndicator()
+{
+    for (var i=0;i<chargeCurrent/5;i++)
+    {
+        drawSprite(chargeIndicator,0,i * 5);
+    }
+}
