@@ -99,6 +99,14 @@ var BOATS = {
             delay:4
         }
     ]
+},
+"titanic":{
+    "offset":15,
+    "parts":[
+        {
+            img:"img/boat_titanic.png",
+            delay:0
+        }
+    ]
 }
-
 };
