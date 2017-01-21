@@ -29,10 +29,25 @@ function start() {
     initShaders();
 
     window.requestAnimationFrame(wrappedDrawScene);
+
+    canvas.addEventListener("keydown", increaseAmplitude, false);
+    canvas.addEventListener("keyup", function(){isPressed = false;}, false);
 }
 
 var time = Date.now();
 var deltaTime = 0;
+var isPressed = false;
+
+var wave_amplitude = 20;
+
+function increaseAmplitude()
+{
+    isPressed = true;
+    if(wave_amplitude < 30){
+        wave_amplitude *= 1.05;
+    }
+    
+}
 
 function wrappedDrawScene()
 {
@@ -47,7 +62,7 @@ function wrappedDrawScene()
     
     
     //Create Wave
-    var wave_amplitude = 20;            //higher number = higher wave
+    //var wave_amplitude = 20;            //higher number = higher wave
     var wave_frequency = time / 500;    //lower number = faster wave
     var water_level = 30;
     
@@ -62,6 +77,11 @@ function wrappedDrawScene()
             drawSprite(wave_front_rest, x * 8, y);
         }
     }
+
+    if(wave_amplitude > 2 && isPressed == false){
+        wave_amplitude *= 0.999;
+    }
+
 
     window.requestAnimationFrame(wrappedDrawScene);
 }
