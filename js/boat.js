@@ -18,7 +18,7 @@ function makeBoat(config)
 var activeBoats = [];
 
 var SPRING = 2;
-var SPEED = 0.1;
+var SPEED = 10;
 var MERMAID_X = 10;
 var INV_TIME = 60;
 var HARDINESS = 20;
@@ -30,11 +30,11 @@ function resetBoats()
 
 function updateAliveBoat(boat)
 {
-    boat.x -= SPEED;
+    boat.x -= SPEED * deltaTime;
     if (boat.x < MERMAID_X)
     {
         console.log("GAME OVER");
-        reset();
+        isPaused = true;
     }
     var waterC = waterYAt(boat.x);
 
@@ -67,7 +67,7 @@ function updateAliveBoat(boat)
 function updateSinkingBoat(boat)
 {
     boat.vy = 0.9 * boat.vy + 0.1 * -25;
-    boat.x -= boat.sinkingVX;
+    boat.x -= boat.sinkingVX * deltaTime;
     boat.sinkingVX *= 0.97;
 
     if (boat.y > 10) {

@@ -25,6 +25,8 @@ function resetWater()
     for (var i=0; i<NUM_WATER_SEGMENTS;i++)
     {
         updateWater();
+        // FAKE HAXX!
+        time += deltaTime;
     }
 }
 

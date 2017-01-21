@@ -2,7 +2,7 @@ var seaLevel = 40;
 
 function drawWaterFront()
 {
-    for (var i=0;i<pixWidth / 8;i++) {
+    for (var i=0;i<(pixWidth / 8) + 1;i++) {
         
         var x = i * 8;
         var y = waterYAt(x)-32;
@@ -18,7 +18,7 @@ function drawWaterFront()
 
 function drawWaterBack()
 {   
-    for (var i=0;i<pixWidth / 8;i++) {
+    for (var i=0;i<(pixWidth / 8) + 1;i++) {
         var x = i * 8;
         var y = waterYAt(x)-32;
 
