@@ -54,7 +54,7 @@ function release(){
     //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
         var power = 0.2 + (chargeCurrent / CHARGE_MAX);
 
-        power = 3;
+        power = 2;
 
         var templateWave = WAVES[1];
         var newWave = [];

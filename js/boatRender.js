@@ -1,40 +1,59 @@
 
 function drawBoats()
 {
-    for (var boatI = 0; boatI < activeBoats.length;boatI++) {
-        var boat = activeBoats[boatI];
-        var config = boat.config;
-
-        var sailorCount = 0;
-
-        //Draw main boat
-        var x = boat.x;
-        for (var pi = 0; pi<config.parts.length; pi++)
+    for (var sense = 7; sense>0;sense--)
+    {
+        for (var boatI = 0; boatI < activeBoats.length;boatI++)
         {
-            var y = boat.y;
-
-            var part = config.parts[pi];
-            var delay = part.delay;
-            if (delay > 0)
-            {
-                y = boat.yHist[delay];
-            }
-            y+=config.offset;
+       
+            var boat = activeBoats[boatI];
+            var config = boat.config;
             
-            
-            if (part.sailors)
+            if(sense == config.sensors)
             {
-                for(var slr = 0; slr<part.sailors.length; slr++)
+                var sailorCount = 0;
+                
+                //titanics
+                //pirate
+                //tug
+                //fish
+                //barrel
+                //rowboat
+                //tube
+                
+                
+                
+                //Draw main boat
+                var x = boat.x;
+                for (var pi = 0; pi<config.parts.length; pi++)
                 {
-                    if ( boat.sailors.indexOf(sailorCount) != -1) {
-                        var slrx = x - config.width / 2 + part.sailors[slr].x;
-                        var slry = boat.yHist[1] + part.sailors[slr].y;
-                        drawSprite(sailor, slrx, slry);
+                    var y = boat.y;
+        
+                    var part = config.parts[pi];
+                    var delay = part.delay;
+                    if (delay > 0)
+                    {
+                        y = boat.yHist[delay];
                     }
-                    sailorCount++;
+                    y+=config.offset;
+                    
+                    
+                    if (part.sailors)
+                    {
+                        for(var slr = 0; slr<part.sailors.length; slr++)
+                        {
+                            if ( boat.sailors.indexOf(sailorCount) != -1) {
+                                var slrx = x - config.width / 2 + part.sailors[slr].x;
+                                var slry = boat.yHist[1] + part.sailors[slr].y;
+                                drawSprite(sailor, slrx, slry);
+                            }
+                            sailorCount++;
+                        }
+                    }
+                    drawSprite(part.img, x, y);
+                    
                 }
             }
-            drawSprite(part.img, x, y);
         }
     }
 }

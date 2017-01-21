@@ -4,7 +4,7 @@ var BOATS = {
     "speed":5,
     "sensors":3,
     "sensitivity":2,
-    "sailors":[1,1,2,3,4,5,1,2,3,4,5],
+    "sailors":[2],
     "height":50,
     "width":50,
     "offset":16,
@@ -36,7 +36,7 @@ var BOATS = {
     "speed":12,
     "sensors":4,
     "sensitivity":2,
-    "sailors":[4,3,4,2,4],
+    "sailors":[4],
     "height":50,
     "width":50,
     "offset":20,
@@ -66,11 +66,11 @@ var BOATS = {
         }
     ]
 },
-"fish":{
+"fishboat":{
     "speed":8,
     "sensors":3,
     "sensitivity":3,
-    "sailors":[1,2,3,4,3,4,2,4],
+    "sailors":[1],
     "height":50,
     "width":50,
     "offset":14,
@@ -102,7 +102,7 @@ var BOATS = {
     "speed":10,
     "sensors":1,
     "sensitivity":3,
-    "sailors":[1,1,2,2,3],
+    "sailors":[1],
     "height":50,
     "width":50,
     "offset":10,
@@ -133,8 +133,8 @@ var BOATS = {
 "titanic":{
     "speed":8,
     "sensors":5,
-    "sensitivity":1,
-    "sailors":[0],
+    "sensitivity":2,
+    "sailors":[5],
     "offset":15,
     "parts":[
         {
@@ -143,7 +143,8 @@ var BOATS = {
         },
         {
             img:"img/boats/titanic_middle.png",
-            delay:1
+            delay:1,
+            sailors:[{x:19,y:18},{x:29,y:18},{x:39,y:18},{x:49,y:18},{x:59,y:18}]
         },
         {
             img:"img/boats/titanic_top.png",
@@ -186,7 +187,8 @@ var BOATS = {
         },
         {
             img:"img/boats/Row_top_m.png",
-            delay:2
+            delay:2,
+            sailors:[{x:19,y:18}]
         },
         {
             img:"img/boats/Row_top.png",
@@ -195,7 +197,7 @@ var BOATS = {
    ]           
 },    
 "tube":{
-    "speed":50,
+    "speed":5,
     "sensors":1,
     "sensitivity":3,
     "sailors":[1],
@@ -206,7 +208,7 @@ var BOATS = {
         {
             img:"img/boats/Tube_back.png",
             delay:0,
-            sailors:[{x:25,y:42}]
+            sailors:[{x:25,y:25}]
         },
         {
             img:"img/boats/Tube_front.png",
