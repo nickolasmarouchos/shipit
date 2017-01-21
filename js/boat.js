@@ -86,6 +86,7 @@ function updateAliveBoat(boat)
         score++;
         boat.sinkingVX = boat.config.speed;
         boat.invTime = INV_TIME;
+        killSailor(boat.x, boat.y);
     }
 }
 
