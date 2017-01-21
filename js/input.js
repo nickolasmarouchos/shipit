@@ -1,14 +1,16 @@
-var number = 5;
-var numTest = document.getElementById("gl");
-//var wave_amplitude = document.getElementById("wave_amplitude");
 
-var canvas = document.getElementById("glcanvas");
-var chargeCurrent = 0; 
+var chargeCurrent = 0;
 var chargeSpeed = 5;
 var charageMax = 100; 
 
 
+function resetInput()
+{
+    chargeCurrent = 0;
+}
+
 function initInput(){
+    var canvas = document;
     canvas.addEventListener("keydown", charge, false);
     canvas.addEventListener("keyup", release, false);
 }

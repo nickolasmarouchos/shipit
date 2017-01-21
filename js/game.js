@@ -31,41 +31,28 @@ function start() {
     
     initShaders();
 
-    window.requestAnimationFrame(wrappedDrawScene);
-
-    canvas.addEventListener("keydown", increaseAmplitude, false);
-    canvas.addEventListener("keyup", function(){isPressed = false;}, false);
-
+    window.requestAnimationFrame(drawScene);
 
     initInput();
 
+    reset();
 }
 
 var time = 0;
-var previousTimeStamp = Date.now();
-var deltaTime = 0;
-var isPressed = false;
+var deltaTime = 1/60;
 
-var wave_amplitude = 20;
-
-function increaseAmplitude()
-{
-    isPressed = true;
-    if(wave_amplitude < 30){
-        wave_amplitude *= 1.05;
-    }
-    
+function reset() {
+    resetInput();
+    resetWater();
+    resetBoats();
 }
 
-function wrappedDrawScene()
+function drawScene()
 {
-    var now = Date.now();
-    deltaTime = (now - previousTimeStamp) / 1000;
-    previousTimeStamp = now;
     time+=deltaTime;
 
     updateWater();
-    updateBoat();
+    updateBoats();
 
     clearScreen();
     
@@ -73,33 +60,9 @@ function wrappedDrawScene()
     drawSprite(background, pixWidth/2, pixHeight/2);
     
     drawWaterBack();
-    drawBoat();
+    drawBoats();
     drawWaterFront();
 
-    /*
-    //Create Wave
-    //var wave_amplitude = 20;            //higher number = higher wave
-    var wave_frequency = time / 500;    //lower number = faster wave
-    var water_level = 30;
-    
-    for (var x=0;x<20;x++) {
-        var y = Math.sin(x * 0.1 + wave_frequency) * wave_amplitude + water_level;
-
-        drawSprite(wave_back, x * 8, y);
-        if(Math.sin(x * 0.1 + wave_frequency)<-0.75)
-        {
-            drawSprite(wave_front_foam, x * 8, y);
-        }else{
-            drawSprite(wave_front_rest, x * 8, y);
-        }
-    }
-
-    if(wave_amplitude > 2 && isPressed == false){
-        wave_amplitude *= 0.999;
-    }
-    */
-
-
-    window.requestAnimationFrame(wrappedDrawScene);
+    window.requestAnimationFrame(drawScene);
 }
 

@@ -2,13 +2,6 @@
 var NUM_WATER_SEGMENTS = pixWidth;
 
 var waterLevels = [];
-(function()
-{
-    for (var i=0;i<NUM_WATER_SEGMENTS;i++)
-    {
-        waterLevels.push(0);
-    }
-})();
 
 function waterYAt(x)
 {
@@ -19,6 +12,21 @@ var activeWaves = [];
 
 var chargeTime = 0;
 var chargePlus = 0;
+
+function resetWater()
+{
+    activeWaves = [];
+    waterLevels = [];
+    for (var i=0;i<NUM_WATER_SEGMENTS;i++)
+    {
+        waterLevels.push(0);
+    }
+
+    for (var i=0; i<NUM_WATER_SEGMENTS;i++)
+    {
+        updateWater();
+    }
+}
 
 function updateWater() {
     var leftMost = Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
