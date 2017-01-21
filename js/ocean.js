@@ -1,5 +1,5 @@
 
-var NUM_WATER_SEGMENTS = pixWidth / 8;
+var NUM_WATER_SEGMENTS = pixWidth/8+1;
 
 var waterLevels = [];
 (function()
@@ -13,7 +13,7 @@ var waterLevels = [];
 function updateWater()
 {
     for (var i=0;i<NUM_WATER_SEGMENTS;i++) {
-        waterLevels[i] = Math.sin(i/10.0 + time/500) * 10;
+        waterLevels[i] = Math.sin(i/2.0 - time/500) * 5;
     }
 }
 

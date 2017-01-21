@@ -1,10 +1,11 @@
 var gl; // A global variable for the WebGL context
 
 var background = "img/background.png";
-
 var wave_back = "img/wave_back.png";
-var wave_front_rest = "img/green_8x4.png";
-var wave_front_foam = "img/red_8x4.png";
+var wave_front_rest = "img/wave_front_rest.png";
+var wave_front_foam = "img/wave_front_foam.png";
+
+var boat1 = "img/boat1.png";
 
 
 function start() {
@@ -26,6 +27,8 @@ function start() {
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
 
+    loadSprite(boat1);
+    
     initShaders();
 
     window.requestAnimationFrame(wrappedDrawScene);
@@ -60,8 +63,10 @@ function wrappedDrawScene()
     clearScreen();
     
     //Create Background
-    drawSprite(background, 0, 0);
+    drawSprite(background, pixWidth/2, pixHeight/2);
 
+    drawSprite(boat1, pixWidth/2, pixHeight/2)
+    
     drawWater();
 
     /*
