@@ -7,10 +7,8 @@ function drawBoatBack()
 function drawBoat()
 {
     //Draw main boat
-    var seaLevel = 40;
-
-    var x = pixWidth/2;
-    var y = seaLevel;
+    var x = boat.x;
+    var y = boat.y + 16;
     drawSprite(boat1, x,y);
 }
 

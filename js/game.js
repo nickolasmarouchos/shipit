@@ -61,6 +61,7 @@ function wrappedDrawScene()
     time+=deltaTime;
 
     updateWater();
+    updateBoat();
 
     clearScreen();
     

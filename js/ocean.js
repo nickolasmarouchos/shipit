@@ -1,5 +1,6 @@
 
-var NUM_WATER_SEGMENTS = pixWidth;
+var SUPER = 1;
+var NUM_WATER_SEGMENTS = pixWidth * SUPER;
 
 var waterLevels = [];
 (function()
@@ -10,8 +11,13 @@ var waterLevels = [];
     }
 })();
 
+function waterYAt(x)
+{
+    return waterLevels[x / SUPER] + seaLevel;
+}
+
 function updateWater() {
-    var leftMost = Math.cos(time * 10) * Math.cos(time) * 10;
+    var leftMost = Math.cos(time * 2) * Math.cos(time) * 10;
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
