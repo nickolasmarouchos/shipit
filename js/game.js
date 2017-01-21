@@ -7,6 +7,7 @@ var wave_front_foam = "img/wave_front_foam.png";
 var sailor = "img/person_fisherman.png";
 var rock = "img/rock.png";
 var mermaid = "img/mermaid.png";
+var tombstone = "img/tombstone2.png";
 
 function start() {
     var canvas = document.getElementById("glcanvas");
@@ -30,6 +31,7 @@ function start() {
     loadSprite(sailor);
     loadSprite(rock);
     loadSprite(mermaid);
+    loadSprite(tombstone);
 
     numbersSprites.forEach(function(s){
         loadSprite(s);

@@ -14,11 +14,11 @@ function killSailor(locx, locy)
     //console.log("dead sailor");
 }
 
-function createTombstone(locx,locy)
+function createTombstone(locx)
 {
     var tombstone = {
         "x": locx,
-        "y": locy
+        "y": 8
     }
     
     tombstones.push(tombstone);
@@ -36,7 +36,7 @@ function drawTombstones()
 {
     for (var i = 0; i<tombstones.length; i++)
     {
-        drawSprite(sailor, tombstones[i].x, tombstones[i].y);
+        drawSprite(tombstone, tombstones[i].x, tombstones[i].y);
     }
 }
 
@@ -51,7 +51,7 @@ function updateDeadSailor(deadSailor)
     
     if(deadSailor.y < 0)
     {
-        createTombstone(deadSailor.x, 0);
+        createTombstone(deadSailor.x);
         deadSailors.splice(deadSailors.indexOf(deadSailor),1);
     }else{
         drawSprite(sailor, deadSailor.x, deadSailor.y);
