@@ -9,10 +9,10 @@ var gameStage = 0;
 
 
 var shipTypes = [
-"tug", 
 "barrel", 
+"fish", 
+"tug",
 "pirate",
-"fish",
 "titanic"
 ];
 
@@ -26,15 +26,15 @@ var spawnTime = [
 ]
 
 var stageTime = [
-	1000,
-	2
+	45,
+	90
 ]
 
 var spawnFrequency = [
 	[
-		[4,8], [2,3], [0,0], [0,0], [0,0]
+		[7,10], [0,0], [0,0], [0,0], [0,0]
 	], [
-		[4,7], [2,3], [0,0], [5,8], [0,0]
+		[7,10], [15,20], [0,0], [0,0], [0,0]
 	], [
 		[4,7], [2,3], [9,12], [5,8], [10,15]
 	]
@@ -47,7 +47,7 @@ function updateSpawner()
   		if(spawnFrequency[gameStage][i][1] != 0){
   			spawnTime[i] += deltaTime;
   			if(spawnTime[i] >= Math.floor(Math.random() * spawnFrequency[gameStage][i][1]) + spawnFrequency[gameStage][i][0]){
-  				//console.log("spawned: " + shipTypes[i]);
+  				console.log("spawned: " + shipTypes[i]);
   				spawnBoat(shipTypes[i]);
   				spawnTime[i] = 0;
   			}
