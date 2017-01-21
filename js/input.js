@@ -24,9 +24,22 @@ function charge(){
 }
 
 function release(){
+
+    var power = chargeCurrent;
+
     chargePlus = chargeCurrent;
     chargeCurrent = 0;
     chargeTime = 0;
+
+    var templateWave = simpleWave;
+    var newWave = [];
+    for (var i=0;i<templateWave.length;i++)
+    {
+        newWave.push(templateWave[i] * power);
+    }
+
+    activeWaves.push(newWave);
+
     console.log("released");
 }
 
