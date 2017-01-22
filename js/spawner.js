@@ -8,6 +8,13 @@ var gameTime = 0;
 var gameStage = 0;
 var waveTime = 0;
 
+function resetSpawner()
+{
+    gameTime = 0;
+    gameStage = 0;
+    waveTime = 0;
+}
+
 var shipTypes = [
 	"tube",
 	"barrel",
@@ -59,7 +66,7 @@ var stageTime = [
 	15,
 	60,
 	90
-]
+];
 
 function checkSpawn()
 {
@@ -108,7 +115,7 @@ function updateSpawner()
         {
             gameStage = spawnWeights.length - 1;
         }
-    	console.log("Stage: " + (gameStage + 1));
+    	//console.log("Stage: " + (gameStage + 1));
     }
 }
 

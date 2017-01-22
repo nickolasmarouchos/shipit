@@ -80,6 +80,8 @@ function reset() {
     resetWater();
     resetBoats();
 
+    resetSpawner();
+
     resetScore();
 
     spawnBoat("tube");
