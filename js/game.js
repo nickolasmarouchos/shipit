@@ -7,7 +7,7 @@ var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
 var sailor = "img/person_fisherman.png";
-var rock = "img/rock.png";
+var rock = "img/rock2.png";
 var mermaid = "img/mermaid.png";
 var tombstone = "img/tombstone2.png";
 
