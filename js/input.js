@@ -32,7 +32,7 @@ function charge(){
 
 function updateInput()
 {
-    if (isKeyDown) {
+    if (isKeyDown && !mermaidRelaxing) {
         if (chargeCurrent < CHARGE_MAX) {
             chargeCurrent += CHARGE_SPEED * deltaTime;
         } else {
@@ -40,6 +40,17 @@ function updateInput()
                 chargeStep++;
                 chargeCurrent = 0;
             }
+        }
+    }
+
+    if (mermaidRelaxing) {
+        mermaidYV += -0.1 * mermaidY;
+        mermaidYV *= 0.8;
+        mermaidY += mermaidYV * 0.5;
+        if (Math.abs(mermaidYV) < 0.1) {
+            mermaidYV = 0;
+            mermaidY = 0;
+            mermaidRelaxing = false;
         }
     }
 }
@@ -53,6 +64,14 @@ function release(){
         return;
     }
 
+    if (mermaidRelaxing)
+    {
+        return;
+    }
+
+    mermaidRelaxing = true;
+    mermaidY =chargeMermaidY();
+    mermaidYV = 0;
 
     if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
         var power = 0.2 + (3.5 * chargeStep + 1);
@@ -64,10 +83,29 @@ function release(){
     chargeStep = 0;
 }
 
+var mermaidRelaxing = false;
+var mermaidYV = 0;
+var mermaidY = 0;
+
+function chargeMermaidY()
+{
+    var c = chargeCurrent / CHARGE_MAX;
+    var y = (c + chargeStep)*10;
+    return y;
+}
+
+function drawMermaid()
+{
+    var y = chargeMermaidY();
+    if (mermaidRelaxing)
+    {
+        y = mermaidY;
+    }
+    drawSprite(mermaid, 17, 49 - y*1.8);
+}
+
 function drawChargeIndicator()
 {
-    console.log(chargeCurrent);
-
     if (chargeStep > 0)
     {
         for (var j=0;j<CHARGE_MAX/5;j++)
@@ -79,4 +117,5 @@ function drawChargeIndicator()
     {
         drawSprite(INPUT_SPRITES[chargeStep],0,i * 5);
     }
+
 }

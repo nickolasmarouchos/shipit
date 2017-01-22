@@ -109,13 +109,14 @@ function drawScene()
         
         drawWaterBack();
         drawSprite(rock, 16, 25);
-        drawSprite(mermaid, 17, 49);
+        drawMermaid();
+
         drawBoats();
         drawTombstones();
         drawDeadSailors();
         drawWaterFront();
 
-        drawChargeIndicator();
+//        drawChargeIndicator();
 
         if (isPaused)
         {
