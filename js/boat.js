@@ -87,7 +87,7 @@ function updateAliveBoat(boat)
         boat.vy -= 9;
         if (boat.x < pixWidth) {
             // on screen
-            boat.vx += 0.2;
+            boat.vx += 0.15;
         }
     } else {
         boat.vy *= 0.95;
