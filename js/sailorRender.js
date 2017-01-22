@@ -10,7 +10,7 @@ function killSailor(locx, locy)
         "rotation": 0
     };
     
-    var die = createAudio('audio/scream01.wav', { volume: 0.5, loop: false }, function() {});
+    var die = createAudio('audio/pop01.wav', { volume: 1, loop: false }, function() {});
     die.play();
     
     deadSailors.push(deadSailor);

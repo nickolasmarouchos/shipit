@@ -56,7 +56,6 @@ function updateInput()
 }
 
 function release(){
-
     isKeyDown = false;
 
     if (isPaused)
@@ -68,6 +67,10 @@ function release(){
     {
         return;
     }
+
+
+    var splash = createAudio('audio/wave01.wav', { volume: 0.1, loop: false }, function() {});
+    splash.play();
 
     mermaidRelaxing = true;
     mermaidY =chargeMermaidY();
