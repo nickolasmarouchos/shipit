@@ -46,6 +46,9 @@ function charge(){
 function release(){
 
 
+    var splash = createAudio('audio/wave01.wav', { volume: 0.1, loop: false }, function() {});
+    splash.play();
+    
     isKeyDown = false;
 
     if (isPaused)
