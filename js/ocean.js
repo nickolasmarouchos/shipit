@@ -41,6 +41,7 @@ function resetWater() {
 var mermaidTimeout = 0;
 var mAcc = 0;
 var mermaidMinY = 200;
+var mermaidMaxY = 0;
 
 function updateWater() {
 
@@ -49,6 +50,10 @@ function updateWater() {
     if (mermaidY < mermaidMinY)
     {
         mermaidMinY = mermaidY;
+    }
+    if (mermaidY > mermaidMaxY)
+    {
+        mermaidMaxY = mermaidY;
     }
 
     if (mermaidY < waterAtMermaid) {
@@ -78,12 +83,14 @@ function updateWater() {
 
         if (Math.abs(mermaidYV) > 1 && mermaidTimeout <=0 && mermaidY < waterAtMermaid) {
             console.log("splash " + mermaidYV);
-            var power = (waterAtMermaid - mermaidMinY ) /5;
-            console.log(power)
-            if (Math.abs(power) > 1) {
+            var power = (mermaidMaxY - mermaidMinY ) / 10;
+            console.log(power);
+            if (power > 4) {
                 spawnWave(-1 * power);
             }
             mermaidMinY = 200;
+            mermaidMaxY = 0;
+
             mAcc += power * 2;
             mermaidTimeout = 5;
             mermaidYV = 0;
@@ -129,13 +136,13 @@ function updateWater() {
      for (var wi = 0;wi<activeWaves.length;wi++)
      {
      var wave = activeWaves[wi];
-     if (wave.length == 0)
+     if (wave.done())
      {
-     activeWaves.splice(wi,1);
-     wi--;
+        activeWaves.splice(wi,1);
+        wi--;
      } else {
-     var waveY = wave.shift();
-     mermaidWave += waveY;
+        var waveY = wave.next();
+        mermaidWave += waveY;
      }
      }
 

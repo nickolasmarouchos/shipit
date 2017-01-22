@@ -55,23 +55,13 @@ function release(){
     chargeStep = 0;
 }
 
-function spawnWave(power)
-{
-    //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
-
-    var templateWave = WAVES[1];
-    var newWave = [];
-    for (var i = 0; i < templateWave.length; i++) {
-        newWave.push(templateWave[i] * power);
-    }
-
-    activeWaves.push(newWave);
-    //}
-}
-
 function drawChargeIndicator()
 {
-    var power = (waterYAt(MERMAID_X) - mermaidMinY) / 5;
+    var power = (mermaidMaxY - mermaidMinY) / 5;
+    if (power < 0)
+    {
+        return;
+    }
     for (var j=0;j< power;j++)
     {
         drawSprite(INPUT_SPRITES[0],0,j * 5);

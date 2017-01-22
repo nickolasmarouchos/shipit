@@ -85,7 +85,10 @@ function updateAliveBoat(boat)
     if (dY < 0) {
         // free fall
         boat.vy -= boat.config.sensitivity * 3;
-        boat.vx+=0.2;
+        if (boat.x <= pixWidth) {
+            // on screeon
+            boat.vx += 0.2;
+        }
     } else {
         boat.vy *= 0.95;
         boat.vx *= 0.9;
@@ -102,12 +105,16 @@ function updateAliveBoat(boat)
     var acceleration = boat.vy - prevVY;
 
     if (Math.abs(acceleration) > BOAT_HARDNESS && boat.invTime == 0) {
-        boat.hp--;
-        score++;
-        boat.sinkingVX = boat.config.speed;
-        boat.invTime = INV_TIME;
-        boat.sailors.shift();
-        killSailor(boat.x, boat.y);
+        if (boat.x <= pixWidth) {
+            // on screen
+
+            boat.hp--;
+            score++;
+            boat.sinkingVX = boat.config.speed;
+            boat.invTime = INV_TIME;
+            boat.sailors.shift();
+            killSailor(boat.x, boat.y);
+        }
     }
 }
 
