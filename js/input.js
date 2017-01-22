@@ -20,6 +20,15 @@ function resetInput()
     chargeCurrent = 0;
 }
 
+function absorbEvent_(event) {
+    var e = event || window.event;
+    e.preventDefault && e.preventDefault();
+    e.stopPropagation && e.stopPropagation();
+    e.cancelBubble = true;
+    e.returnValue = false;
+    return false;
+}
+
 function initInput(){
     document.addEventListener("keydown", charge, false);
     document.addEventListener("keyup", release, false);
@@ -30,6 +39,7 @@ function initInput(){
 
 
 function charge(e){
+    absorbEvent_(e);
     isKeyDown = true;
     if(e.keyCode == 32 && e.target == document.body) {
         e.preventDefault();
