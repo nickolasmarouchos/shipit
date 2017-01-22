@@ -38,8 +38,8 @@ function updateWater() {
        waterChargePower--;
    }
 
-    var leftMost = Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
-    var mermaidWave =  -1 * (waterChargePower / CHARGE_MAX) * 10;
+    var leftMost = 0;//Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
+    var mermaidWave =  0;//-1 * (waterChargePower / CHARGE_MAX) * 10;
     for (var wi = 0;wi<activeWaves.length;wi++)
     {
         var wave = activeWaves[wi];
