@@ -6,13 +6,14 @@ function resetDeadSailors()
     deadSailors = [];
 }
 
-function killSailor(locx, locy)
+function killSailor(locx, locy, spriteIndex)
 {
     var deadSailor = {
         "x": locx,
         "y": locy,
         "velocity": 3,
-        "rotation": 0
+        "rotation": 0,
+        "spriteIndex":spriteIndex
     };
     
     var die = createAudio('audio/pop01.wav', { volume: 1, loop: false }, function() {});
@@ -45,7 +46,7 @@ function drawDeadSailors()
     for (var i = 0; i<deadSailors.length; i++)
     {
         var ds = deadSailors[i];
-        drawSprite(sailor, ds.x, ds.y);
+        drawSprite(SAILORS[ds.spriteIndex], ds.x, ds.y);
     }
 }
 

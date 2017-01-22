@@ -1,4 +1,6 @@
 
+var SAILORS = ["img/person_fisherman.png","img/person_fisherman2.png","img/person_fisherman3.png"];
+
 function drawBoats()
 {
     for (var sense = 7; sense>0;sense--)
@@ -12,6 +14,7 @@ function drawBoats()
             if(sense == config.sensors)
             {
                 var sailorCount = 0;
+                var drawnSailorCount = 0;
                 
                 //titanics
                 //pirate
@@ -45,7 +48,10 @@ function drawBoats()
                             if ( boat.sailors.indexOf(sailorCount) != -1) {
                                 var slrx = x - config.width / 2 + part.sailors[slr].x;
                                 var slry = boat.yHist[delay+1] + part.sailors[slr].y;
-                                drawSprite(sailor, slrx, slry);
+
+                                var sailorSprite = SAILORS[boat.sailorSprites[drawnSailorCount]];
+                                drawSprite(sailorSprite, slrx, slry);
+                                drawnSailorCount++;
                             }
                             sailorCount++;
                         }
