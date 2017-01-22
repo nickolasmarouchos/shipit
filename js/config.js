@@ -33,7 +33,7 @@ var BOATS = {
     ]
 },
 "pirate":{
-    "speed":12,
+    "speed":7,
     "sensors":4,
     "sensitivity":2,
     "sailors":[4],
@@ -131,7 +131,7 @@ var BOATS = {
     ]
 },
 "titanic":{
-    "speed":8,
+    "speed":3,
     "sensors":5,
     "sensitivity":2,
     "sailors":[5],
@@ -169,7 +169,7 @@ var BOATS = {
     ]
 },
 "rowboat":{
-    "speed":15,
+    "speed":11,
     "sensors":1,
     "sensitivity":2,
     "sailors":[1],

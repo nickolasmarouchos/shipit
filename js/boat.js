@@ -54,8 +54,8 @@ function makeBoat(config)
 
 var activeBoats = [];
 
-var MERMAID_X = 10;
-var BOAT_HARDNESS = 20;
+var MERMAID_X = 17;
+var BOAT_HARDNESS = 11;
 var INV_TIME = 60;
 
 function resetBoats()
@@ -65,31 +65,28 @@ function resetBoats()
 
 function updateAliveBoat(boat)
 {
-    boat.x += (boat.vx-boat.config.speed) * deltaTime;
+    boat.x += (boat.vx-boat.config.speed) * 2 * deltaTime;
     if (boat.x < MERMAID_X)
     {
         console.log("GAME OVER");
         isPaused = true;
     }
-    var waterC = 0;
-    var numSensors = boat.config.sensors;
-     var nsh = Math.floor(numSensors / 2);
-    for (var sensorOffset=nsh;sensorOffset< nsh + numSensors;sensorOffset++) {
-        waterC += waterYAt(boat.x);
-    }
-    waterC /= numSensors;
+    var waterC = waterYAt(boat.x);
 
     var prevVY = boat.vy;
 
     var dY = waterC - boat.y;
     if (dY < 0) {
         // free fall
-        boat.vy -= boat.config.sensitivity * 3;
-        boat.vx+=0.2;
+        boat.vy -= 9;
+        if (boat.x < pixWidth) {
+            // on screen
+            boat.vx += 0.2;
+        }
     } else {
         boat.vy *= 0.95;
         boat.vx *= 0.9;
-        boat.vy += boat.config.sensitivity * dY;
+        boat.vy += 3 * Math.sqrt(dY);
     }
 
     boat.y += boat.vy * deltaTime * 0.3;
@@ -101,13 +98,17 @@ function updateAliveBoat(boat)
 
     var acceleration = boat.vy - prevVY;
 
-    if (Math.abs(acceleration) > BOAT_HARDNESS && boat.invTime == 0) {
-        boat.hp--;
-        score++;
-        boat.sinkingVX = boat.config.speed;
-        boat.invTime = INV_TIME;
-        boat.sailors.shift();
-        killSailor(boat.x, boat.y);
+    if (Math.abs(acceleration) > BOAT_HARDNESS && boat.invTime <= 0) {
+        if (boat.x < pixWidth) {
+            // on screen
+
+            boat.hp--;
+            score++;
+            boat.sinkingVX = boat.config.speed;
+            boat.invTime = INV_TIME;
+            boat.sailors.shift();
+            killSailor(boat.x, boat.y);
+        }
     }
 }
 

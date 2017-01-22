@@ -77,6 +77,8 @@ function reset() {
     resetBoats();
 
     resetScore();
+
+    spawnBoat("tug");
 }
 
 function drawScene()
