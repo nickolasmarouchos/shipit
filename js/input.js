@@ -52,16 +52,9 @@ function release(){
     isKeyDown = false;
 
     //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
-        var power = 0.2 + (5 * chargeStep + 2);
-;
+        var power = 0.2 + (5 * chargeStep + 1);
 
-        var templateWave = WAVES[1];
-        var newWave = [];
-        for (var i = 0; i < templateWave.length; i++) {
-            newWave.push(templateWave[i] * power);
-        }
-
-        activeWaves.push(newWave);
+        activeWaves.push(makeWave(power, chargeStep + 2));
     //}
 
     chargeCurrent = 0;

@@ -43,12 +43,12 @@ function updateWater() {
     for (var wi = 0;wi<activeWaves.length;wi++)
     {
         var wave = activeWaves[wi];
-        if (wave.length == 0)
+        if (wave.done())
         {
             activeWaves.splice(wi,1);
             wi--;
         } else {
-            var waveY = wave.shift();
+            var waveY = wave.next();
             mermaidWave += waveY;
         }
     }
