@@ -18,6 +18,11 @@ var INPUT_SPRITES = [
 function resetInput()
 {
     chargeCurrent = 0;
+    chargeStep = 0;
+    mermaidRelaxing = false;
+    mermaidYV = 0;
+    mermaidY = 0;
+
 }
 
 function absorbEvent_(event) {
