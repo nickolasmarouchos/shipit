@@ -71,6 +71,12 @@ function spawnWave(power)
 
 function drawChargeIndicator()
 {
+    var power = (waterYAt(MERMAID_X) - mermaidMinY) / 5;
+    for (var j=0;j< power;j++)
+    {
+        drawSprite(INPUT_SPRITES[0],0,j * 5);
+    }
+    /*
     if (chargeStep > 0)
     {
         for (var j=0;j<CHARGE_MAX/5;j++)
@@ -82,4 +88,5 @@ function drawChargeIndicator()
     {
         drawSprite(INPUT_SPRITES[chargeStep],0,i * 5);
     }
+    */
 }

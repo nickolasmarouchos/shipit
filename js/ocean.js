@@ -40,20 +40,26 @@ function resetWater() {
 
 var mermaidTimeout = 0;
 var mAcc = 0;
+var mermaidMinY = 200;
 
 function updateWater() {
 
     var waterAtMermaid = waterYAt(MERMAID_X);
 
+    if (mermaidY < mermaidMinY)
+    {
+        mermaidMinY = mermaidY;
+    }
+
     if (mermaidY < waterAtMermaid) {
         // underwater
         if (isKeyDown) {
             if (mermaidY > 0) {
-                mermaidY -= 0.5 * (1-(seaLevel - mermaidY) / seaLevel);
+                mermaidY -= 0.3;// * (1-(seaLevel - mermaidY) / seaLevel);
             }
         } else {
             mermaidYV += 0.1;
-            mermaidY += mermaidYV;
+            mermaidY += mermaidYV * 0.3;
         }
 
         if (Math.abs(mermaidYV) > 1 && mermaidY >= waterAtMermaid) {
@@ -68,15 +74,16 @@ function updateWater() {
         } else {
             mermaidYV -= 0.1;
         }
-        mermaidY += mermaidYV;
+        mermaidY += mermaidYV * 0.3;
 
         if (Math.abs(mermaidYV) > 1 && mermaidTimeout <=0 && mermaidY < waterAtMermaid) {
             console.log("splash " + mermaidYV);
-            var power = mermaidYV;
+            var power = (waterAtMermaid - mermaidMinY ) /5;
             console.log(power)
             if (Math.abs(power) > 1) {
-                spawnWave(power * 2);
+                spawnWave(-1 * power);
             }
+            mermaidMinY = 200;
             mAcc += power * 2;
             mermaidTimeout = 5;
             mermaidYV = 0;
@@ -115,8 +122,8 @@ function updateWater() {
         waterChargePower = -WATER_CHARGE_MAX;
     }
 
-    var rightMost = Math.sin(time * 2.3) * 2 + Math.sin(time * 6.7) * 1.5;
-
+    var rightMost = 0;// Math.sin(time * 2.3) * 2 + Math.sin(time * 6.7) * 1.5;
+    var leftMost = Math.sin(time * 2.3) * 2 + Math.sin(time * 6.7) * 1.5;
 
     var mermaidWave = 0;
      for (var wi = 0;wi<activeWaves.length;wi++)
@@ -142,7 +149,7 @@ function updateWater() {
         {
             l=waterLevels[i-1];
         } else{
-            l=0;
+            l=leftMost;
         }
         if (i>0)
         {
