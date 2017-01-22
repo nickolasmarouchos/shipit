@@ -82,7 +82,7 @@ function reset() {
 
     resetScore();
 
-    spawnBoat("tug");
+    spawnBoat("tube");
 }
 
 function drawScene()
@@ -98,7 +98,7 @@ function drawScene()
 
         if (!isPaused) {
             updateWater();
-            updateSpawner();
+            //updateSpawner();
             updateBoats();
         }
 

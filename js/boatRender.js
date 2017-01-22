@@ -44,7 +44,7 @@ function drawBoats()
                         {
                             if ( boat.sailors.indexOf(sailorCount) != -1) {
                                 var slrx = x - config.width / 2 + part.sailors[slr].x;
-                                var slry = boat.yHist[1] + part.sailors[slr].y;
+                                var slry = boat.yHist[delay+1] + part.sailors[slr].y;
                                 drawSprite(sailor, slrx, slry);
                             }
                             sailorCount++;
