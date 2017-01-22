@@ -120,6 +120,8 @@ function loadSprite(source) {
 
 var DEFAULT_COLOR = [1,1,1,1];
 
+var lastSprite = "";
+
 function drawSprite(spriteKey,x,y,color) {
     var sprite = spritesRegistry[spriteKey];
 
@@ -131,16 +133,17 @@ function drawSprite(spriteKey,x,y,color) {
             color = DEFAULT_COLOR;
         }
 
-        setDrawCallColor(color[0],color[1],color[2],color[3]);
+        //setDrawCallColor(color[0],color[1],color[2],color[3]);
 
         setDrawCallPosition(x - sprite.width/2, y - sprite.height / 2);
-        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
-        gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
-        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
-        gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
-        gl.bindBuffer(gl.ARRAY_BUFFER, sprite.col);
-        gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sprite.tris);
+        if (sprite != lastSprite) {
+            gl.bindBuffer(gl.ARRAY_BUFFER, sprite.vert);
+            gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0);
+            gl.bindBuffer(gl.ARRAY_BUFFER, sprite.col);
+            gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sprite.tris);
+            lastSprite = sprite;
+        }
         gl.drawElements(gl.TRIANGLES, numTri, gl.UNSIGNED_SHORT, 0);
     }
 }
