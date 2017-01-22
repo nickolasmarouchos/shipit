@@ -11,7 +11,7 @@ var effects = {
 }
 };
 
-var music = createAudio('audio/music_relaxed.mp3', { volume: 0.05, loop:true }, function() {});
+var music = createAudio('audio/music_relaxed.mp3', { volume: 1, loop:true }, function() {});
 
 function setupSounds()
 {
