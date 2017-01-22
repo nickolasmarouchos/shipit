@@ -82,7 +82,7 @@ function reset() {
 
     resetScore();
 
-    spawnBoat("tug");
+    spawnBoat("tube");
 }
 
 function drawScene()

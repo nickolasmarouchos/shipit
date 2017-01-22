@@ -126,7 +126,7 @@ var BOATS = {
         {
             img:"img/boats/Barrel_middle.png",
             delay:2,
-            sailors:[{x:19,y:18},{x:23,y:18},{x:28,y:18}]
+            sailors:[{x:19,y:6},{x:23,y:7},{x:28,y:6}]
         }
     ]
 },
@@ -136,6 +136,8 @@ var BOATS = {
     "sensitivity":2,
     "sailors":[5],
     "offset":15,
+    "width":160,
+    "height":50,
     "parts":[
         {
             img:"img/boats/titanic_bottom.png",
@@ -208,7 +210,7 @@ var BOATS = {
         {
             img:"img/boats/Tube_back.png",
             delay:0,
-            sailors:[{x:25,y:25}]
+            sailors:[{x:25,y:3}]
         },
         {
             img:"img/boats/Tube_front.png",

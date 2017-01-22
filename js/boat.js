@@ -46,7 +46,7 @@ function makeBoat(config,maxSailors)
       vy:0,
       speed:speed,
       config:config,
-      yHist:[y,y,y,y,y],
+      yHist:[y,y,y,y,y,y,y,y,y,y],
       invTime: 0,
       hp:numSailors,
       sailors:sailors
@@ -133,7 +133,7 @@ function updateBoats()
         var prevY = boat.y;
 
         boat.yHist.unshift(prevY);
-        boat.yHist.length = 5;
+        boat.yHist.length -= 1;
 
         if (boat.hp > 0)
         {
