@@ -209,12 +209,12 @@ var BOATS = {
     "parts":[
         {
             img:"img/boats/Tube_back.png",
-            delay:0,
-            sailors:[{x:25,y:3}]
+            delay:0
         },
         {
             img:"img/boats/Tube_front.png",
-            delay:0
+            delay:0,
+            sailors:[{x:25,y:3}]
         },
         {
             img:"img/boats/Tube_head.png",
