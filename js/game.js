@@ -6,9 +6,8 @@ var background = "img/background.png";
 var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
-var sailor = "img/person_fisherman.png";
 var rock = "img/rock2.png";
-var mermaid = "img/mermaid.png";
+var MERMAIDS = ["img/mermaid.png","img/mermaid2.png","img/mermaid3.png"];
 var tombstone = "img/tombstone2.png";
 
 function start() {
@@ -32,9 +31,7 @@ function start() {
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
 
-    loadSprite(sailor);
     loadSprite(rock);
-    loadSprite(mermaid);
     loadSprite(tombstone);
     
     setupSounds();
@@ -45,7 +42,17 @@ function start() {
         loadSprite(s);
     });
 
+    /*
     INPUT_SPRITES.forEach(function(s){
+        loadSprite(s);
+    });
+    */
+
+    SAILORS.forEach(function(s){
+        loadSprite(s);
+    });
+
+    MERMAIDS.forEach(function(s){
         loadSprite(s);
     });
     
@@ -79,6 +86,7 @@ function reset() {
     resetInput();
     resetWater();
     resetBoats();
+    resetDeadSailors();
 
     resetSpawner();
 
@@ -103,6 +111,7 @@ function drawScene()
             updateWater();
             updateSpawner();
             updateBoats();
+            updateDeadSailors();
         }
 
         //Create Background

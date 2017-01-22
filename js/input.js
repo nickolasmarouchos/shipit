@@ -24,10 +24,8 @@ function initInput(){
     document.addEventListener("keydown", charge, false);
     document.addEventListener("keyup", release, false);
 
-    var canvas = document.getElementById("glcanvas");
-
-    canvas.addEventListener("touchstart", charge, false);
-    canvas.addEventListener("touchend", release, false);
+    document.addEventListener("touchstart", charge, false);
+    document.addEventListener("touchend", release, false);
 }
 
 
@@ -41,10 +39,14 @@ function updateInput()
         if (chargeCurrent < CHARGE_MAX) {
             chargeCurrent += CHARGE_SPEED * deltaTime;
         } else {
-            if (chargeStep < 3) {
+            if (chargeStep < 2) {
                 chargeStep++;
                 chargeCurrent = 0;
             }
+        }
+        if (chargeCurrent > CHARGE_MAX)
+        {
+            chargeCurrent = CHARGE_MAX;
         }
     }
 
@@ -109,7 +111,7 @@ function drawMermaid()
     {
         y = mermaidY;
     }
-    drawSprite(mermaid, 17, 49 - y*1.8);
+    drawSprite(MERMAIDS[chargeStep], 17, 49 - y*1.5);
 }
 
 function drawChargeIndicator()

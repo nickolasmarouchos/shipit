@@ -1,13 +1,19 @@
-var deadSailors = []
-var tombstones = []
+var deadSailors = [];
+var tombstones = [];
 
-function killSailor(locx, locy)
+function resetDeadSailors()
+{
+    deadSailors = [];
+}
+
+function killSailor(locx, locy, spriteIndex)
 {
     var deadSailor = {
         "x": locx,
         "y": locy,
         "velocity": 3,
-        "rotation": 0
+        "rotation": 0,
+        "spriteIndex":spriteIndex
     };
     
     var die = createAudio('audio/pop01.wav', { volume: 1, loop: false }, function() {});
@@ -27,13 +33,23 @@ function createTombstone(locx)
     tombstones.push(tombstone);
 }
 
-function drawDeadSailors()
+function updateDeadSailors()
 {
     for (var i = 0; i<deadSailors.length; i++)
     {
         updateDeadSailor(deadSailors[i]);
     }
 }
+
+function drawDeadSailors()
+{
+    for (var i = 0; i<deadSailors.length; i++)
+    {
+        var ds = deadSailors[i];
+        drawSprite(SAILORS[ds.spriteIndex], ds.x, ds.y);
+    }
+}
+
 
 function drawTombstones()
 {
@@ -45,7 +61,6 @@ function drawTombstones()
 
 function updateDeadSailor(deadSailor)
 {
-    
     var gravity = -0.15;
     
     deadSailor.velocity += gravity;
@@ -56,8 +71,6 @@ function updateDeadSailor(deadSailor)
     {
         createTombstone(deadSailor.x);
         deadSailors.splice(deadSailors.indexOf(deadSailor),1);
-    }else{
-        drawSprite(sailor, deadSailor.x, deadSailor.y);
     }
     
 }

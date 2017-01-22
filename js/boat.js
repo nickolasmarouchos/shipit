@@ -2,7 +2,7 @@
 function makeBoat(config,maxSailors)
 {
     var x = pixWidth + 30;
-    var y = waterYAt(x)
+    var y = waterYAt(x);
 
     var speed = config.speed + Math.random();
 
@@ -20,6 +20,7 @@ function makeBoat(config,maxSailors)
     });
 
     var sailors = [];
+    var sailorSprites = [];
     var sailorsDistributed = 0;
     var escCounter=0;
     while (sailorsDistributed < numSailors)
@@ -37,6 +38,9 @@ function makeBoat(config,maxSailors)
             break;
         }
     }
+    sailors.forEach(function(){
+        sailorSprites.push(Math.floor(Math.random()*SAILORS.length));
+    });
 
   return {
       x:x,
@@ -49,7 +53,8 @@ function makeBoat(config,maxSailors)
       yHist:[y,y,y,y,y,y,y,y,y,y],
       invTime: 0,
       hp:numSailors,
-      sailors:sailors
+      sailors:sailors,
+      sailorSprites:sailorSprites
   };
 };
 
@@ -108,7 +113,9 @@ function updateAliveBoat(boat)
             boat.sinkingVX = boat.config.speed;
             boat.invTime = INV_TIME;
             boat.sailors.shift();
-            killSailor(boat.x, boat.y);
+
+            killSailor(boat.x, boat.y,boat.sailorSprites[0]);
+            boat.sailorSprites.shift();
         }
     }
 }
