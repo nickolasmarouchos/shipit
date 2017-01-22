@@ -107,7 +107,7 @@ function drawMermaid()
     {
         y = mermaidY;
     }
-    drawSprite(mermaid, 17, 49 - y*1.8);
+    drawSprite(MERMAIDS[chargeStep], 17, 49 - y*1.8);
 }
 
 function drawChargeIndicator()

@@ -7,7 +7,7 @@ var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
 var rock = "img/rock2.png";
-var mermaid = "img/mermaid.png";
+var MERMAIDS = ["img/mermaid.png","img/mermaid2.png","img/mermaid3.png"];
 var tombstone = "img/tombstone2.png";
 
 function start() {
@@ -32,7 +32,6 @@ function start() {
     loadSprite(wave_front_foam);
 
     loadSprite(rock);
-    loadSprite(mermaid);
     loadSprite(tombstone);
     
     setupSounds();
@@ -48,6 +47,10 @@ function start() {
     });
 
     SAILORS.forEach(function(s){
+        loadSprite(s);
+    });
+
+    MERMAIDS.forEach(function(s){
         loadSprite(s);
     });
     
