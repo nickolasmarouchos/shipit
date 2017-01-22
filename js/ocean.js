@@ -80,7 +80,6 @@ function updateWater() {
             l+=mermaidWave * (i / MERMAID_X) * 0.3;
         }
 
-
         waterLevels[i] = l;
         revWaterLevels[ri] = r;
     }

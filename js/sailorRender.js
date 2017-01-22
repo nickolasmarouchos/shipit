@@ -10,6 +10,8 @@ function killSailor(locx, locy)
         "rotation": 0
     };
     
+    die.play();
+    
     deadSailors.push(deadSailor);
     //console.log("dead sailor");
 }
