@@ -23,9 +23,11 @@ function resetInput()
 function initInput(){
     document.addEventListener("keydown", charge, false);
     document.addEventListener("keyup", release, false);
-    
-    document.addEventListener("touchstart", charge, false);
-  document.addEventListener("touchend", release, false);
+
+    var canvas = document.getElementById("glcanvas");
+
+    canvas.addEventListener("touchstart", charge, false);
+    canvas.addEventListener("touchend", release, false);
 }
 
 
