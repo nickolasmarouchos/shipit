@@ -97,6 +97,7 @@ function drawScene()
         time += deltaTime;
 
         if (!isPaused) {
+            updateInput();
             updateWater();
             updateSpawner();
             updateBoats();

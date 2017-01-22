@@ -4,7 +4,7 @@ var chargeStep = 0;
 
 var isKeyDown = false;
 
-var CHARGE_SPEED = 10;
+var CHARGE_SPEED = 50;
 var CHARGE_MIN = 15;
 var CHARGE_MAX = 100;
 
@@ -28,23 +28,23 @@ function initInput(){
 
 function charge(){
     isKeyDown = true;
-    if (isPaused)
-    {
-        return;
-    }
-    if(chargeCurrent < CHARGE_MAX){
-        chargeCurrent += CHARGE_SPEED;
-    } else {
-        if (chargeStep < WAVES.length - 1) {
-            chargeStep++;
-            chargeCurrent = 0;
+}
+
+function updateInput()
+{
+    if (isKeyDown) {
+        if (chargeCurrent < CHARGE_MAX) {
+            chargeCurrent += CHARGE_SPEED * deltaTime;
+        } else {
+            if (chargeStep < 3) {
+                chargeStep++;
+                chargeCurrent = 0;
+            }
         }
     }
-
 }
 
 function release(){
-
 
     isKeyDown = false;
 
@@ -66,6 +66,8 @@ function release(){
 
 function drawChargeIndicator()
 {
+    console.log(chargeCurrent);
+
     if (chargeStep > 0)
     {
         for (var j=0;j<CHARGE_MAX/5;j++)
