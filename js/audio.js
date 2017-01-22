@@ -11,7 +11,6 @@ var effects = {
 }
 };
 
-var die = createAudio('audio/die.mp3', { volume: 0.1, loop: false }, function() {});
 var music = createAudio('audio/music_relaxed.mp3', { volume: 0.1 }, function() {});
 
 function setupSounds()

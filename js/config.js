@@ -105,7 +105,7 @@ var BOATS = {
     "sailors":[1],
     "height":50,
     "width":50,
-    "offset":10,
+    "offset":0,
     "parts":[
         {
             img:"img/boats/Barrel_bottom.png",
@@ -143,12 +143,12 @@ var BOATS = {
         },
         {
             img:"img/boats/titanic_middle.png",
-            delay:1,
-            sailors:[{x:19,y:18},{x:29,y:18},{x:39,y:18},{x:49,y:18},{x:59,y:18}]
+            delay:1
         },
         {
             img:"img/boats/titanic_top.png",
-            delay:2
+            delay:2,
+            sailors:[{x:19,y:18},{x:29,y:18},{x:39,y:18},{x:49,y:18},{x:59,y:18}]
         },
         {
             img:"img/boats/titanic_ch1.png",
