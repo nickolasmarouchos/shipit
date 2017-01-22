@@ -21,8 +21,8 @@ var shipTypes = [
 var spawnOffset = [
 	0,
 	0,
-	0,
-	1, 
+	1,
+	0, 
 	2,
 	3,
 	4
@@ -31,7 +31,7 @@ var spawnOffset = [
 //frequency per ship [min,max]
 var spawnWeights = [
 	[[1],[1],[1],[0],[0],[0],[0]],
-	[[1],[1],[1],[1],[1],[0],[0]],
+	[[1],[1],[1],[3],[3],[1],[0]],
 	[[1],[1],[1],[1],[1],[1],[1]]
 ];
 
@@ -47,9 +47,16 @@ var waveOffsetMultiplier = [
 	0.5
 ];
 
+var waveSailorMax = [
+	1,
+	2,
+	10
+];
+
+
 //how much time per stage / affects spawn frequency - 45s to stage 2
 var stageTime = [
-	30,
+	15,
 	60,
 	90
 ]
@@ -82,7 +89,7 @@ function spawnWave()
 		}
 	}
 	
-	spawnBoat(shipTypes[selectedBoat]);
+	spawnBoat(shipTypes[selectedBoat],waveSailorMax[gameStage]);
 	
 	waveTime = stageWaveOffset[gameStage]+spawnOffset[selectedBoat]*waveOffsetMultiplier[gameStage];
 	

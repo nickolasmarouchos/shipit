@@ -1,5 +1,5 @@
 
-function makeBoat(config)
+function makeBoat(config,maxSailors)
 {
     var x = pixWidth + 30;
     var y = waterYAt(x)
@@ -9,7 +9,8 @@ function makeBoat(config)
     var items = config.sailors;
 
     var numSailors = items[Math.floor(Math.random()*items.length)];
-
+    if (numSailors>maxSailors) numSailors=maxSailors;
+    
     var possibleSailors = 0;
 
     config.parts.forEach(function(part){
