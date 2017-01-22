@@ -19,6 +19,8 @@ function start() {
     if (!gl) {
         return;
     }
+    
+    
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -32,6 +34,10 @@ function start() {
     loadSprite(rock);
     loadSprite(mermaid);
     loadSprite(tombstone);
+    
+    setupSounds();
+    
+    music.play();
 
     numbersSprites.forEach(function(s){
         loadSprite(s);
@@ -57,6 +63,7 @@ function start() {
 
     reset();
 }
+
 
 var isPaused = false;
 var time = 0;
