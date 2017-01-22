@@ -77,7 +77,7 @@ function updateWater() {
 
         if (i < MERMAID_X)
         {
-            l+=mermaidWave * (i / MERMAID_X) * 0.4;
+            l+=mermaidWave * (i / MERMAID_X) * 0.3;
         }
 
 
