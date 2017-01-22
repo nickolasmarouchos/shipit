@@ -98,7 +98,7 @@ function drawScene()
 
         if (!isPaused) {
             updateWater();
-            //updateSpawner();
+            updateSpawner();
             updateBoats();
         }
 
