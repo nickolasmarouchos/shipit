@@ -133,11 +133,11 @@ function drawScene()
         drawWaterBack();
         drawSprite(rock, 16, 25);
         drawMermaid();
-        drawFish();
 
         drawBoats();
         drawTombstones();
         drawDeadSailors();
+        drawFish();
         drawWaterFront();
 
 //        drawChargeIndicator();
