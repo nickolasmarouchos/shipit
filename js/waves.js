@@ -39,7 +39,7 @@ var WAVES = [tinyWave,simpleWave,notchWave];
     var LENGTH = 100;
 
     for (var i = 0; i < LENGTH; i++) {
-        var y = Math.sin(i / 25);
+        var y = Math.sin(i / 10);
         y *= (LENGTH - i) / LENGTH;
         simpleWave.push(y);
     }
@@ -50,7 +50,7 @@ var WAVES = [tinyWave,simpleWave,notchWave];
     var LENGTH = 60;
 
     for (var i = 0; i < LENGTH; i++) {
-        var y = Math.sin(i / 20) * 0.6;
+        var y = Math.sin(i / 10) * 0.6;
         y *= (LENGTH - i) / LENGTH;
         tinyWave.push(y);
     }

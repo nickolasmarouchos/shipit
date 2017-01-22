@@ -1,13 +1,11 @@
 
-var SUPER = 2;
-var NUM_WATER_SEGMENTS = (pixWidth + 100)*SUPER;// offscreen water
+var NUM_WATER_SEGMENTS = pixWidth + 100;// offscreen water
 
 var waterLevels = [];
 
 function waterYAt(x)
 {
-    var index = Math.round(x * SUPER);
-    return waterLevels[index] + seaLevel;
+    return waterLevels[Math.round(x)] + seaLevel;
 }
 
 var activeWaves = [];
@@ -18,7 +16,8 @@ function resetWater()
 {
     activeWaves = [];
     waterLevels = [];
-    for (var i = 0; i < NUM_WATER_SEGMENTS; i++) {
+    for (var i=0;i<NUM_WATER_SEGMENTS;i++)
+    {
         waterLevels.push(0);
     }
 
@@ -56,20 +55,19 @@ function updateWater() {
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
-        var ri = (NUM_WATER_SEGMENTS-1) - i;
         var l = 0;
-        var r=0;
         if (i>0)
         {
             l=waterLevels[i-1];
         } else{
-            l=0;
+            l=leftMost;
         }
 
         if (i < MERMAID_X)
         {
-            l+=mermaidWave * (i / MERMAID_X) * 0.3;
+            l+=mermaidWave * (i / MERMAID_X) * 0.4;
         }
+
 
         waterLevels[i] = l;
     }

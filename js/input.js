@@ -54,7 +54,6 @@ function release(){
     //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
         var power = 0.2 + (5 * chargeStep + 1);
 
-
         activeWaves.push(makeWave(power, chargeStep + 2));
     //}
 
