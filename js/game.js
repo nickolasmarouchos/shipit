@@ -55,6 +55,10 @@ function start() {
     MERMAIDS.forEach(function(s){
         loadSprite(s);
     });
+
+    FISH.forEach(function(s){
+        loadSprite(s);
+    });
     
     for (var boatKey in BOATS) {
         var tug = BOATS[boatKey];
@@ -88,6 +92,11 @@ function reset() {
     resetBoats();
     resetDeadSailors();
 
+    resetFish();
+    spawnFish(pixWidth + 10, 8);
+    spawnFish(pixWidth + 35 + Math.random()*60, 4);
+    spawnFish(pixWidth + 65 + Math.random()*60, 4);
+
     resetSpawner();
 
     resetScore();
@@ -112,6 +121,7 @@ function drawScene()
             updateSpawner();
             updateBoats();
             updateDeadSailors();
+            updateFish();
         }
 
         //Create Background
@@ -121,6 +131,7 @@ function drawScene()
         drawWaterBack();
         drawSprite(rock, 16, 25);
         drawMermaid();
+        drawFish();
 
         drawBoats();
         drawTombstones();
