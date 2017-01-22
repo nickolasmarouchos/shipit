@@ -6,7 +6,7 @@ function spawnBoat(name)
 
 var gameTime = 0;
 var gameStage = 0;
-
+var waveTime = 0;
 
 var shipTypes = [
 	"tube",
@@ -18,53 +18,87 @@ var shipTypes = [
 	"titanic"
 ];
 
-//value corresponds to ship types
-var spawnTime = [
+var spawnOffset = [
 	0,
 	0,
 	0,
-	0,
-	0,
-	0,
+	1, 
+	2,
+	3,
+	4
+];
+
+//frequency per ship [min,max]
+var spawnWeights = [
+	[[1],[1],[1],[0],[0],[0],[0]],
+	[[1],[1],[1],[1],[1],[0],[0]],
+	[[1],[1],[1],[1],[1],[1],[1]]
+];
+
+var stageWaveOffset = [
+	2,
+	1,
 	0
-]
+];
+
+var waveOffsetMultiplier = [
+	1.0,
+	0.8,
+	0.5
+];
 
 //how much time per stage / affects spawn frequency - 45s to stage 2
 var stageTime = [
-	45,
+	30,
+	60,
 	90
 ]
 
-//frequency per ship [min,max]
-var spawnFrequency = [
-	[[1,4], [3,7], [5,10], [7,13], [9,16], [00,00], [00,00]],
-	[[1,4], [3,7], [5,10], [7,13], [9,16], [11,19], [00,00]],
-	[[1,4], [3,7], [5,10], [7,13], [9,16], [11,19], [13,22]]
-];
+function checkSpawn()
+{
+	waveTime -= deltaTime;
+	if(waveTime <= 0){
+		spawnWave();
+	}
+	
+}
+
+function spawnWave()
+{
+	var spawnWeightTotal = 0;
+	for(var x = 0; x< spawnWeights[gameStage].length;x++)
+	{
+		spawnWeightTotal += spawnWeights[gameStage][x][0];
+	}
+	var selectWeight = Math.round(Math.random()*spawnWeightTotal);
+		
+	var selectedBoat = 0;
+	for(var x = 0; x< spawnWeights[gameStage].length;x++)
+	{
+		selectWeight -= spawnWeights[gameStage][x];
+		if(selectWeight <= 0){
+			selectedBoat = x;
+			break;
+		}
+	}
+	
+	spawnBoat(shipTypes[selectedBoat]);
+	
+	waveTime = stageWaveOffset[gameStage]+spawnOffset[selectedBoat]*waveOffsetMultiplier[gameStage];
+	
+}
+
 
 function updateSpawner()
 {
-    for(var i = 0; i < shipTypes.length; i++){
-  		if(spawnFrequency[gameStage][i][1] != 0){
-  			spawnTime[i] += deltaTime;
-  			if(spawnTime[i] >= Math.floor(Math.random() * spawnFrequency[gameStage][i][1]) + spawnFrequency[gameStage][i][0]){
-  				console.log("spawned: " + shipTypes[i]);
-  				spawnBoat(shipTypes[i]);
-  				spawnTime[i] = 0;
-  			}
-  		}
-
-    }
+	checkSpawn();
 
     gameTime += deltaTime;
 
     if(gameTime >= stageTime[gameStage] ){
     	gameStage++;
     	console.log("Stage: " + (gameStage + 1));
-
-
     }
-
 }
 
 
