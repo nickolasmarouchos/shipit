@@ -27,13 +27,23 @@ function createTombstone(locx)
     tombstones.push(tombstone);
 }
 
-function drawDeadSailors()
+function updateDeadSailors()
 {
     for (var i = 0; i<deadSailors.length; i++)
     {
         updateDeadSailor(deadSailors[i]);
     }
 }
+
+function drawDeadSailors()
+{
+    for (var i = 0; i<deadSailors.length; i++)
+    {
+        var ds = deadSailors[i];
+        drawSprite(sailor, ds.x, ds.y);
+    }
+}
+
 
 function drawTombstones()
 {
@@ -45,7 +55,6 @@ function drawTombstones()
 
 function updateDeadSailor(deadSailor)
 {
-    
     var gravity = -0.15;
     
     deadSailor.velocity += gravity;
@@ -56,8 +65,6 @@ function updateDeadSailor(deadSailor)
     {
         createTombstone(deadSailor.x);
         deadSailors.splice(deadSailors.indexOf(deadSailor),1);
-    }else{
-        drawSprite(sailor, deadSailor.x, deadSailor.y);
     }
     
 }

@@ -103,6 +103,7 @@ function drawScene()
             updateWater();
             updateSpawner();
             updateBoats();
+            updateDeadSailors();
         }
 
         //Create Background
