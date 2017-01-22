@@ -35,11 +35,14 @@ function initInput(){
 
     document.addEventListener("touchstart", charge, false);
     document.addEventListener("touchend", release, false);
+
+    document.addEventListener("touchstart", absorbEvent_, false);
+    document.addEventListener("touchend", absorbEvent_, false);
 }
 
 
-function charge(e){
-    absorbEvent_(e);
+function charge(event){
+    var e = event || window.event;
     isKeyDown = true;
     if(e.keyCode == 32 && e.target == document.body) {
         e.preventDefault();
