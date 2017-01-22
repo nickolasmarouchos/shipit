@@ -24,7 +24,7 @@ function drawScore()
     var div = 1;
     for (var i=0;i<5;i++) {
         var v = Math.floor(score/div) % 10;
-        drawSprite(numbersSprites[v], i * -4 + pixWidth/2, 10);
+        drawSprite(numbersSprites[v], i * -4 + pixWidth/2 + 8, 11);
         div *= 10;
     }
 }
