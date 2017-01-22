@@ -5,7 +5,6 @@ var chargeStep = 0;
 var isKeyDown = false;
 
 var CHARGE_SPEED = 2;
-var CHARGE_MIN = 15;
 var CHARGE_MAX = 100;
 
 var INPUT_SPRITES = [
@@ -27,6 +26,7 @@ function initInput(){
 
 
 function charge(){
+
     if (isPaused)
     {
         return;
@@ -39,6 +39,7 @@ function charge(){
             chargeCurrent = 0;
         }
     }
+
     isKeyDown = true;
 }
 
@@ -49,6 +50,8 @@ function release(){
         return;
     }
 
+    spawnWave(10 );
+
     isKeyDown = false;
 
     chargeCurrent = 0;
@@ -57,6 +60,7 @@ function release(){
 
 function drawChargeIndicator()
 {
+    /*
     var power = (mermaidMaxY - mermaidMinY) / 5;
     if (power < 0)
     {
@@ -66,7 +70,7 @@ function drawChargeIndicator()
     {
         drawSprite(INPUT_SPRITES[0],0,j * 5);
     }
-    /*
+    */
     if (chargeStep > 0)
     {
         for (var j=0;j<CHARGE_MAX/5;j++)
@@ -78,5 +82,5 @@ function drawChargeIndicator()
     {
         drawSprite(INPUT_SPRITES[chargeStep],0,i * 5);
     }
-    */
+
 }

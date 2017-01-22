@@ -1,7 +1,7 @@
 
 function makeWave(power)
 {
-    var LENGTH = 200;
+    var LENGTH = 400;
     var i = 0;
     this.done = function()
     {
@@ -10,12 +10,12 @@ function makeWave(power)
     this.next = function()
     {
         i++;
-        var y = Math.sin(i / (2.5 * Math.abs(power)));
+        var y = Math.sin(i / (15 * Math.abs(power)));
         var hull = (LENGTH - i) / LENGTH/2;
         if (i<LENGTH/2) {
             hull = 1;
         }
-        return power * y * hull;
+        return Math.sqrt(power) * y * hull;
     };
     return this;
 }

@@ -45,6 +45,7 @@ var mermaidMaxY = 0;
 
 function updateWater() {
 
+    /*
     var waterAtMermaid = waterYAt(MERMAID_X);
 
     if (mermaidY < mermaidMinY)
@@ -128,6 +129,9 @@ function updateWater() {
     } else if (waterChargePower < -WATER_CHARGE_MAX) {
         waterChargePower = -WATER_CHARGE_MAX;
     }
+    */
+
+    mermaidYV = 47;
 
     var rightMost = 0;// Math.sin(time * 2.3) * 2 + Math.sin(time * 6.7) * 1.5;
     var leftMost = Math.sin(time * 2.3) * 2 + Math.sin(time * 6.7) * 1.5;
