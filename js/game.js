@@ -1,5 +1,7 @@
 var gl; // A global variable for the WebGL context
 
+var gameStartScreen = "img/gamestart.png";
+var gameOverScreen = "img/gameover.png";
 var background = "img/background.png";
 var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
@@ -19,11 +21,11 @@ function start() {
     if (!gl) {
         return;
     }
-    
-    
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
+    loadSprite(gameStartScreen);
+    loadSprite(gameOverScreen);
     loadSprite(background);
     
     loadSprite(wave_back);
@@ -60,17 +62,19 @@ function start() {
     window.requestAnimationFrame(drawScene);
 
     initInput();
-
-    reset();
 }
 
 
-var isPaused = false;
+var didSeeStartScreen = false;
+var isPaused = true;
+var pauseTimer = 0;
 var time = 0;
 var deltaTime = 1/60;
 
 function reset() {
     time = 0;
+    pauseTimer = 0;
+    isPaused = false;
 
     resetInput();
     resetWater();
@@ -111,7 +115,27 @@ function drawScene()
         drawWaterFront();
 
         drawChargeIndicator();
-        drawScore();
+
+        if (isPaused)
+        {
+            pauseTimer ++;
+
+            if (didSeeStartScreen) {
+                drawSprite(gameOverScreen, pixWidth / 2, pixHeight / 2);
+            } else {
+                drawSprite(gameStartScreen, pixWidth / 2, pixHeight / 2);
+            }
+
+            if (isKeyDown && (pauseTimer > 120 || !didSeeStartScreen))
+            {
+                didSeeStartScreen = true;
+                reset();
+            }
+        }
+
+        if (!isPaused || didSeeStartScreen) {
+            drawScore();
+        }
     }
     window.requestAnimationFrame(drawScene);
 }

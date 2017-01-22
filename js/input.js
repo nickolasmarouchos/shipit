@@ -27,6 +27,7 @@ function initInput(){
 
 
 function charge(){
+    isKeyDown = true;
     if (isPaused)
     {
         return;
@@ -39,17 +40,19 @@ function charge(){
             chargeCurrent = 0;
         }
     }
-    isKeyDown = true;
+
 }
 
 function release(){
+
+
+    isKeyDown = false;
 
     if (isPaused)
     {
         return;
     }
 
-    isKeyDown = false;
 
     //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
         var power = 0.2 + (5 * chargeStep + 1);
