@@ -29,8 +29,11 @@ function initInput(){
 }
 
 
-function charge(){
+function charge(e){
     isKeyDown = true;
+    if(e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+    }
 }
 
 function updateInput()
