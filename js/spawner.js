@@ -9,15 +9,19 @@ var gameStage = 0;
 
 
 var shipTypes = [
-"barrel", 
-"fish", 
-"tug",
-"pirate",
-"titanic"
+	"tube",
+	"barrel",
+	"rowboat",
+	"fishboat", 
+	"tug",
+	"pirate",
+	"titanic"
 ];
 
-
+//value corresponds to ship types
 var spawnTime = [
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -25,20 +29,17 @@ var spawnTime = [
 	0
 ]
 
+//how much time per stage / affects spawn frequency - 45s to stage 2
 var stageTime = [
 	45,
 	90
 ]
 
+//frequency per ship [min,max]
 var spawnFrequency = [
-	[
-		[7,10], [0,0], [0,0], [0,0], [0,0]
-	], [
-		[7,10], [15,20], [0,0], [0,0], [0,0]
-	], [
-		[4,7], [2,3], [9,12], [5,8], [10,15]
-	]
-
+	[[1,4], [3,7], [5,10], [7,13], [9,16], [11,19], [13,22]],
+	[[1,4], [3,7], [5,10], [7,13], [9,16], [11,19], [13,22]],
+	[[1,4], [3,7], [5,10], [7,13], [9,16], [11,19], [13,22]]
 ];
 
 function updateSpawner()

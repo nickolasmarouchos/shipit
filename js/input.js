@@ -51,22 +51,22 @@ function release(){
 
     isKeyDown = false;
 
-    //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
-        var power = 0.2 + (chargeCurrent / CHARGE_MAX);
-
-        power = 3;
-
-        var templateWave = WAVES[1];
-        var newWave = [];
-        for (var i = 0; i < templateWave.length; i++) {
-            newWave.push(templateWave[i] * power);
-        }
-
-        activeWaves.push(newWave);
-    //}
-
     chargeCurrent = 0;
     chargeStep = 0;
+}
+
+function spawnWave(power)
+{
+    //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
+
+    var templateWave = WAVES[1];
+    var newWave = [];
+    for (var i = 0; i < templateWave.length; i++) {
+        newWave.push(templateWave[i] * power);
+    }
+
+    activeWaves.push(newWave);
+    //}
 }
 
 function drawChargeIndicator()

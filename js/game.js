@@ -94,11 +94,11 @@ function drawScene()
         
         
         drawWaterBack();
-        drawTombstones();
         drawSprite(rock, 16, 25);
         drawMermaid();
 
         drawBoats();
+        drawTombstones();
         drawDeadSailors();
         drawWaterFront();
 
