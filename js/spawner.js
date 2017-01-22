@@ -104,6 +104,10 @@ function updateSpawner()
 
     if(gameTime >= stageTime[gameStage] ){
     	gameStage++;
+        if (gameStage > spawnWeights.length - 1)
+        {
+            gameStage = spawnWeights.length - 1;
+        }
     	console.log("Stage: " + (gameStage + 1));
     }
 }
