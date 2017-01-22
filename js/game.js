@@ -6,6 +6,7 @@ var background = "img/background.png";
 var wave_back = "img/wave_back.png";
 var wave_front_rest = "img/wave_front_rest.png";
 var wave_front_foam = "img/wave_front_foam.png";
+var wave_front_foam2 = "img/wave_front_foam2.png";
 var rock = "img/rock2.png";
 var MERMAIDS = ["img/mermaid.png","img/mermaid2.png","img/mermaid3.png"];
 var tombstone = "img/tombstone2.png";
@@ -30,6 +31,7 @@ function start() {
     loadSprite(wave_back);
     loadSprite(wave_front_rest);
     loadSprite(wave_front_foam);
+    loadSprite(wave_front_foam2);
 
     loadSprite(rock);
     loadSprite(tombstone);
