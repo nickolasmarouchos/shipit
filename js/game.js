@@ -79,6 +79,7 @@ function reset() {
     resetInput();
     resetWater();
     resetBoats();
+    resetDeadSailors();
 
     resetSpawner();
 

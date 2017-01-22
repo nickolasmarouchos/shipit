@@ -1,5 +1,10 @@
-var deadSailors = []
-var tombstones = []
+var deadSailors = [];
+var tombstones = [];
+
+function resetDeadSailors()
+{
+    deadSailors = [];
+}
 
 function killSailor(locx, locy)
 {
