@@ -39,10 +39,14 @@ function updateInput()
         if (chargeCurrent < CHARGE_MAX) {
             chargeCurrent += CHARGE_SPEED * deltaTime;
         } else {
-            if (chargeStep < 3) {
+            if (chargeStep < 2) {
                 chargeStep++;
                 chargeCurrent = 0;
             }
+        }
+        if (chargeCurrent > CHARGE_MAX)
+        {
+            chargeCurrent = CHARGE_MAX;
         }
     }
 
@@ -107,7 +111,7 @@ function drawMermaid()
     {
         y = mermaidY;
     }
-    drawSprite(MERMAIDS[chargeStep], 17, 49 - y*1.8);
+    drawSprite(MERMAIDS[chargeStep], 17, 49 - y*1.5);
 }
 
 function drawChargeIndicator()

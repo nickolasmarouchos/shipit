@@ -42,9 +42,11 @@ function start() {
         loadSprite(s);
     });
 
+    /*
     INPUT_SPRITES.forEach(function(s){
         loadSprite(s);
     });
+    */
 
     SAILORS.forEach(function(s){
         loadSprite(s);
