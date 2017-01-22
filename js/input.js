@@ -4,7 +4,7 @@ var chargeStep = 0;
 
 var isKeyDown = false;
 
-var CHARGE_SPEED = 2;
+var CHARGE_SPEED = 10;
 var CHARGE_MIN = 15;
 var CHARGE_MAX = 100;
 
@@ -52,17 +52,10 @@ function release(){
     isKeyDown = false;
 
     //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
-        var power = 0.2 + (chargeCurrent / CHARGE_MAX);
+        var power = 0.2 + (5 * chargeStep + 1);
 
-        power = 10;
 
-        var templateWave = WAVES[0];
-        var newWave = [];
-        for (var i = 0; i < templateWave.length; i++) {
-            newWave.push(templateWave[i] * power);
-        }
-
-        activeWaves.push(newWave);
+        activeWaves.push(makeWave(power, chargeStep + 2));
     //}
 
     chargeCurrent = 0;

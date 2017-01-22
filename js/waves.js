@@ -1,4 +1,34 @@
 
+
+function makeWave(power, length)
+{
+    var LENGTH = 100 * length;
+    var i = 0;
+    this.done = function()
+    {
+        return i >= LENGTH;
+    };
+    this.next = function()
+    {
+        i++;
+        var y = Math.sin(i / 10 / length);
+        y *= (LENGTH - i) / LENGTH;
+        y*=power;
+        return y;
+    };
+    return this;
+}
+
+function spawnWave(power)
+{
+    //if (chargeCurrent > CHARGE_MIN || chargeStep > 0) {
+
+    activeWaves.push(makeWave(power));
+    //}
+}
+
+////////
+
 var tinyWave = [];
 var simpleWave = [];
 var notchWave = [];
@@ -6,7 +36,7 @@ var notchWave = [];
 var WAVES = [tinyWave,simpleWave,notchWave];
 
 (function() {
-    var LENGTH = 400;
+    var LENGTH = 100;
 
     for (var i = 0; i < LENGTH; i++) {
         var y = Math.sin(i / 25);
