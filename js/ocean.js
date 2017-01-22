@@ -1,11 +1,14 @@
 
-var NUM_WATER_SEGMENTS = pixWidth + 100;// offscreen water
+var SUPER = 2;
+var NUM_WATER_SEGMENTS = (pixWidth + 100)*SUPER;// offscreen water
 
 var waterLevels = [];
+var revWaterLevels = [];
 
 function waterYAt(x)
 {
-    return waterLevels[Math.round(x)] + seaLevel;
+    var index = Math.round(x * SUPER);
+    return waterLevels[index] + revWaterLevels[index] + seaLevel;
 }
 
 var activeWaves = [];
@@ -16,9 +19,10 @@ function resetWater()
 {
     activeWaves = [];
     waterLevels = [];
-    for (var i=0;i<NUM_WATER_SEGMENTS;i++)
-    {
+    revWaterLevels = [];
+    for (var i = 0; i < NUM_WATER_SEGMENTS; i++) {
         waterLevels.push(0);
+        revWaterLevels.push(0);
     }
 
     for (var i=0; i<NUM_WATER_SEGMENTS;i++)
@@ -38,7 +42,7 @@ function updateWater() {
        waterChargePower--;
    }
 
-    var leftMost = Math.sin(time * 7) * 2 + Math.sin(time * 3) * 3;
+    var rightMost = Math.sin(time * 3) * 2 + Math.sin(time * 2.7) * 3;
     var mermaidWave =  -1 * (waterChargePower / CHARGE_MAX) * 10;
     for (var wi = 0;wi<activeWaves.length;wi++)
     {
@@ -55,12 +59,20 @@ function updateWater() {
 
     for (var i=NUM_WATER_SEGMENTS-1;i>=0;i--) {
 
+        var ri = (NUM_WATER_SEGMENTS-1) - i;
         var l = 0;
+        var r=0;
         if (i>0)
         {
             l=waterLevels[i-1];
         } else{
-            l=leftMost;
+            l=0;
+        }
+        if (i>0)
+        {
+            r=revWaterLevels[ri+1];
+        } else{
+            r=rightMost;
         }
 
         if (i < MERMAID_X)
@@ -70,6 +82,7 @@ function updateWater() {
 
 
         waterLevels[i] = l;
+        revWaterLevels[ri] = r;
     }
 }
 
